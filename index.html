@@ -32,7 +32,7 @@
 
 
         
-        fetch(`https://www.penguinrandomhouse.biz/webservices/rest/resources/authors?name=${name}`)
+        fetch(`https://www.penguinrandomhouse.biz/webservices/rest/resources/authors=${name}`)
         .then((response)=>{
             if (!response.ok) throw new Error(response.status);
             return response.json();
