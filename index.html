@@ -32,7 +32,7 @@
 
 
         
-        fetch(`https://www.penguinrandomhouse.biz/webservices/rest/resources/authors=${name}`)
+        fetch(`https://openlibrary.org/search.json?author=${name}`)
         .then((response)=>{
             if (!response.ok) throw new Error(response.status);
             return response.json();
@@ -41,10 +41,10 @@
           // if we get a successful response
           .then((authorData) => {
             const heading = document.createElement("h2");
-            heading.textContent = authorData.authordisplay;
+            heading.textContent = authorData.type;
 
             const info = document.createElement("p");
-            info.innerHTML = authorData.spotlight;
+            info.innerHTML = authorData.biirth_date;
 
             output.append(heading, info);
           })
