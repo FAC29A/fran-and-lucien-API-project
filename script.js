@@ -1,10 +1,17 @@
 const form = document.getElementById("book-search-form")
+const bookshelf = document.getElementsByClassName('bookshelf')[0];
+const submit = document.getElementById("submit");
 
+function hideBooks(){
+    bookshelf.style.display = "none";
+}
+
+submit.addEventListener("click", hideBooks);
 form.addEventListener("submit", function (event) {
         event.preventDefault(); 
 
         const searchQuery = document.getElementById("search-query").value;
-        const perPage = 10; // Limit to 6 results per page
+        const perPage = 6; // Limit to 6 results per page
         const page = 1; // Page number, start with 1 for the first page
         const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${perPage}&page=${page}`;
 
@@ -27,9 +34,7 @@ form.addEventListener("submit", function (event) {
                         const authors = book.author_name ? book.author_name.join(", ") : "Unknown";
                         const firstPublishYear = book.first_publish_year ? book.first_publish_year : "N/A";
                         const bookRatings = book.ratings_average ? book.ratings_average.toFixed(1) : "Rating not found";
-                        console.log(book.subject_key);
                         const resultItem = document.createElement("div");
-                        resultItem.style.backgroundImage = 'url("./images/book7.png")';
                         const category = book.subject_key && book.subject_key.length >= 6 ? book.subject_key[5] : "Category not found";
 
                         // Lucien added
