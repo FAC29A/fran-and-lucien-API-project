@@ -13,56 +13,6 @@
         <input type="text" id="search-query" name="search-query" required>
         <p><em>Hint: use AND to search for multiple terms.</em></p>
         <button type="submit">Search</button>
-<<<<<<< HEAD
-        <output></output>
-      </form>
-
-
-    <script>
-      const form = document.querySelector("form");
-      const output = document.querySelector("output");
-
-      form.addEventListener("submit", (event) => {
-        // stop the form submitting and reloading the page
-        event.preventDefault();
-
-        // clear out any previous results
-        output.innerHTML = "";
-
-        // get the value of the field with name="author"
-        const formData = new FormData(form);
-        const name = formData.get("author");
-
-
-        
-        fetch(`https://openlibrary.org/search.json?author=${name}`)
-        .then((response)=>{
-            if (!response.ok) throw new Error(response.status);
-            return response.json();
-            console.log(response.json())
-          })
-          // if we get a successful response
-          .then((authorData) => {
-            const heading = document.createElement("h2");
-            heading.textContent = authorData.type;
-
-            const info = document.createElement("p");
-            info.innerHTML = authorData.biirth_date;
-
-            output.append(heading, info);
-          })
-          // if the request is unsuccessful
-          .catch((error) => {
-            console.log(error);
-            if (error.message === "404") {
-              output.textContent = `⚠️ Couldn't find "${name}"`;
-            } else {
-              output.textContent = "⚠️ Something went wrong";
-            }
-          });
-      });
-    </script>
-=======
     </form>
 
     <div id="search-results">
@@ -72,6 +22,5 @@
     <footer>Built by Fran and Lucien</footer>
     <script src="script.js"></script>
     
->>>>>>> 49576a5495b2b0e3053453b67695e5affc3ca7cd
 </body>
 </html>
