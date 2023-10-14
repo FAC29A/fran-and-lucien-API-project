@@ -80,7 +80,7 @@ form.addEventListener("submit", function (event) {
             });
     });
 
-    // Lucien added below three functions for cover
+    // Lucien added below two functions for cover
     
     function extractOLIdentifier(key) {
         // Remove "/books/" from the key string
