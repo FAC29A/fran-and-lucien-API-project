@@ -1,0 +1,63 @@
+:root {
+    --pink-bright : #fda2eed7;
+    --green-bright: #82ffb6;
+}
+/* *{
+    border: 1px solid black;
+} */
+
+/* utility classes */
+.center {
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+body {
+    background-image: url('./images/background-image.jpg');
+    background-size: cover;
+    background-repeat: none;
+    height: 700vh;
+    font-family: 'Space Mono', monospace;
+}
+
+
+h1 {
+    font-family: 'Bungee Shade', sans-serif;
+}
+
+.bookshelf {
+    max-width: 100%; 
+  }
+  
+  .bookshelf img {
+    max-width: 100%; 
+    height: auto;    
+    display: block;  
+    margin: 0 auto;  
+  }
+  
+
+footer {
+    width: 100vw;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: var(--green-bright);
+    height: 2.8rem;
+}
+
+.search-result {
+    width : 60vw;
+    height: 40vh;
+    background-image: url('./images/book-green.png');
+    background-size: cover;
+    padding-top: 4rem;
+    padding-right: 5rem;
+    padding-left:3.2rem;
+    padding-bottom:4.4rem;
+    margin-bottom: 1.5rem;
+
+}
