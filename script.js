@@ -32,6 +32,24 @@ form.addEventListener("submit", function (event) {
                         resultItem.style.backgroundImage = 'url("./images/book7.png")';
                         const category = book.subject_key && book.subject_key.length >= 6 ? book.subject_key[5] : "Category not found";
 
+                        // Lucien added
+                        const olIdentifier = extractOLIdentifier(book.seed[1]); // Extract OL identifier
+                        fetchBookCover(olIdentifier)
+                        .then((bookCoverURL) => {
+                            const img = document.createElement('img');
+                            img.src = bookCoverURL;
+                            resultItem.appendChild(img);
+
+                            })
+                        .catch((error) => {
+                            console.log(`Error fetching book cover for ${book.title}: ${error.message}`);
+                           
+                            });
+                        // end of Lucien added
+
+                
+
+
 
                         //div styling- will add to CSS later
                         resultItem.style.width = "60vw";
@@ -52,6 +70,8 @@ form.addEventListener("submit", function (event) {
                 else {
                     searchResults.innerHTML = "No results found.";
                 }
+
+
             }) //end of then 
             .catch(error => {
                 console.error("Error fetching data from Open Library API:", error);
@@ -59,3 +79,29 @@ form.addEventListener("submit", function (event) {
                 searchResults.innerHTML = "An error occurred while fetching data.";
             });
     });
+
+    // Lucien added below two functions for cover
+    
+    function extractOLIdentifier(key) {
+        // Remove "/books/" from the key string
+        return key.replace('/books/', '');
+    }
+
+    async function fetchBookCover(olid) {
+        return fetch(`https://covers.openlibrary.org/b/olid/${olid}-M.jpg`)
+        .then((response) => {
+            if (!response.ok) throw new Error(response.status);
+            return response.url; // Return the URL of the book cover image
+        })
+        .catch((error) => {
+            console.log(`Error fetching book cover for ${olid}: ${error.message}`);
+            throw error;
+        });
+    }
+
+    // end of lucien add
+
+
+
+    
+
