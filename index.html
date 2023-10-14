@@ -3,63 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bookster</title>
 </head>
 <body>
-    <form>
-        <h1>Author Search</h1>
-        <label for="author">Search for an author by name</label>
-        <input id="author" name="author" type="search" required />
+    <form id="book-search-form">
+        <label for="search-query">Search by Title, Author, or Theme:</label>
+        <input type="text" id="search-query" name="search-query" required>
         <button type="submit">Search</button>
-        <output></output>
-      </form>
-
-
-    <script>
-      const form = document.querySelector("form");
-      const output = document.querySelector("output");
-
-      form.addEventListener("submit", (event) => {
-        // stop the form submitting and reloading the page
-        event.preventDefault();
-
-        // clear out any previous results
-        output.innerHTML = "";
-
-        // get the value of the field with name="author"
-        const formData = new FormData(form);
-        const name = formData.get("author");
-
-
-        
-        fetch(`https://www.penguinrandomhouse.biz/webservices/rest/resources/authors=${name}`)
-        .then((response)=>{
-            if (!response.ok) throw new Error(response.status);
-            return response.json();
-            console.log(response.json())
-          })
-          // if we get a successful response
-          .then((authorData) => {
-            const heading = document.createElement("h2");
-            heading.textContent = authorData.authordisplay;
-
-            const info = document.createElement("p");
-            info.innerHTML = authorData.spotlight;
-
-            output.append(heading, info);
-          })
-          // if the request is unsuccessful
-          .catch((error) => {
-            console.log(error);
-            if (error.message === "404") {
-              output.textContent = `⚠️ Couldn't find "${name}"`;
-            } else {
-              output.textContent = "⚠️ Something went wrong";
-            }
-          });
-      });
-    </script>
+    </form>
+    <div id="search-results">
+        <!-- Results will be displayed here -->
+    </div>
+    
+    <script src="script.js"></script>
+    
 </body>
 </html>
-
-
