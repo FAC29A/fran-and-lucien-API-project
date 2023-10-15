@@ -13,7 +13,7 @@ form.addEventListener("submit", function (event) {
         event.preventDefault(); 
 
         const searchQuery = document.getElementById("search-query").value;
-        const perPage = 6; // Limit to 6 results per page
+        const perPage = 8; // Limit to 8 results per page
         const page = 1; // Page number, start with 1 for the first page
         const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${perPage}&page=${page}`;
 
@@ -23,20 +23,35 @@ form.addEventListener("submit", function (event) {
             .then(response => {
                 if (!response.ok) throw new Error(response.status);
                 return response.json(); 
+                
                   })
-            .then(data => {
+            .then(data =>{
+                console.log(data)
+                const booksWithRatings = data.docs.filter(result => result.hasOwnProperty('ratings_average'));
+                const booksWithoutRatings = data.docs.filter(result => !result.hasOwnProperty('ratings_average'));
+
+                // Sort books with ratings_average in descending order
+                booksWithRatings.sort((a, b) => b.ratings_average - a.ratings_average);
+
+                // Combine books with ratings and books without ratings(up to 8 results)
+                data.docs = booksWithRatings.concat(booksWithoutRatings);
+                
+
                 const searchResults = document.getElementById("search-result");
                 searchResults.innerHTML = ""; // Clear previous results
 
                 if (data.docs.length > 0) {
                     for (const index in data.docs) {
                         const book = data.docs[index];
-                        console.log(data);
+                        
                         const title = book.title;
                         const authors = book.author_name ? book.author_name.join(", ") : "Unknown";
+                        //need to filter authors to make sure they are unique
+
                         const firstPublishYear = book.first_publish_year ? book.first_publish_year : "N/A";
                         const bookRatings = book.ratings_average ? book.ratings_average.toFixed(1) : "Rating not found";
-                        const category = book.subject_key && book.subject_key.length >= 6 ? book.subject_key[5] : "Category not found";
+                        const subject = book.subject_key && book.subject_key.length >= 6 ? book.subject_key[5].replaceAll("_", " ") : "Category not found";
+                        const category = subject.slice(0,1).toUpperCase()+subject.slice(1);
                         
                         const resultItem = document.createElement("div");
                         resultItem.className = "search-result";
@@ -44,9 +59,9 @@ form.addEventListener("submit", function (event) {
                         resultItem.innerHTML =
                             `<p><strong>Title:</strong> ${title}</p>
                              <p><strong>Author(s):</strong> ${authors}</p>
-                             <p>Rating: ${bookRatings}</p>
-                             <p>Category: ${category}</p>
-                             <p>First Publish Year: ${firstPublishYear}</p>`;
+                             <p><strong>Rating:</strong> ${bookRatings}</p>
+                             <p><strong>Category:</strong> ${category}</p>
+                             <p><strong>First Published:</strong> ${firstPublishYear}</p>`;
                         searchResults.appendChild(resultItem);
                        
 
