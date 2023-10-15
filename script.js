@@ -36,7 +36,8 @@ form.addEventListener("submit", function (event) {
                         const authors = book.author_name ? book.author_name.join(", ") : "Unknown";
                         const firstPublishYear = book.first_publish_year ? book.first_publish_year : "N/A";
                         const bookRatings = book.ratings_average ? book.ratings_average.toFixed(1) : "Rating not found";
-                        const category = book.subject_key && book.subject_key.length >= 6 ? book.subject_key[5] : "Category not found";
+                        const subject = book.subject_key && book.subject_key.length >= 6 ? book.subject_key[5].replaceAll("_", " ") : "Category not found";
+                        const category = subject.slice(0,1).toUpperCase()+subject.slice(1);
                         
                         const resultItem = document.createElement("div");
                         resultItem.className = "search-result";
@@ -44,9 +45,9 @@ form.addEventListener("submit", function (event) {
                         resultItem.innerHTML =
                             `<p><strong>Title:</strong> ${title}</p>
                              <p><strong>Author(s):</strong> ${authors}</p>
-                             <p>Rating: ${bookRatings}</p>
-                             <p>Category: ${category}</p>
-                             <p>First Publish Year: ${firstPublishYear}</p>`;
+                             <p><strong>Rating:</strong> ${bookRatings}</p>
+                             <p><strong>Category:</strong> ${category}</p>
+                             <p><strong>First Published:</strong> ${firstPublishYear}</p>`;
                         searchResults.appendChild(resultItem);
                        
 
