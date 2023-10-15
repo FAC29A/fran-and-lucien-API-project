@@ -32,7 +32,7 @@ h1 {
     max-width: 100%; 
   }
   
-  .bookshelf img {
+.bookshelf img {
     max-width: 100%; 
     height: auto;    
     display: block;  
@@ -60,3 +60,5 @@ footer {
     margin-bottom: 1.5rem;
 
 }
+
+

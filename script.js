@@ -7,6 +7,8 @@ function hideBooks(){
 }
 
 submit.addEventListener("click", hideBooks);
+
+
 form.addEventListener("submit", function (event) {
         event.preventDefault(); 
 
@@ -23,7 +25,7 @@ form.addEventListener("submit", function (event) {
                 return response.json(); 
                   })
             .then(data => {
-                const searchResults = document.getElementById("search-results");
+                const searchResults = document.getElementById("search-result");
                 searchResults.innerHTML = ""; // Clear previous results
 
                 if (data.docs.length > 0) {
@@ -34,8 +36,19 @@ form.addEventListener("submit", function (event) {
                         const authors = book.author_name ? book.author_name.join(", ") : "Unknown";
                         const firstPublishYear = book.first_publish_year ? book.first_publish_year : "N/A";
                         const bookRatings = book.ratings_average ? book.ratings_average.toFixed(1) : "Rating not found";
-                        const resultItem = document.createElement("div");
                         const category = book.subject_key && book.subject_key.length >= 6 ? book.subject_key[5] : "Category not found";
+                        
+                        const resultItem = document.createElement("div");
+                        resultItem.className = "search-result";
+                       
+                        resultItem.innerHTML =
+                            `<p><strong>Title:</strong> ${title}</p>
+                             <p><strong>Author(s):</strong> ${authors}</p>
+                             <p>Rating: ${bookRatings}</p>
+                             <p>Category: ${category}</p>
+                             <p>First Publish Year: ${firstPublishYear}</p>`;
+                        searchResults.appendChild(resultItem);
+                       
 
                         // Lucien added
                         const olIdentifier = extractOLIdentifier(book.seed[1]); // Extract OL identifier
@@ -54,21 +67,7 @@ form.addEventListener("submit", function (event) {
 
                 
 
-
-
-                        //div styling- will add to CSS later
-                        resultItem.style.width = "60vw";
-                        resultItem.style.height = "40vh";
-                        resultItem.style.backgroundSize = "cover";
-                        resultItem.style.padding = "40px";
-                        resultItem.style.margin = "20px";
-                        resultItem.innerHTML =
-                            `<p><strong>Title:</strong> ${title}</p>
-                             <p><strong>Author(s):</strong> ${authors}</p>
-                             <p>Rating: ${bookRatings}</p>
-                             <p>Category: ${category}</p>
-                             <p>First Publish Year: ${firstPublishYear}</p>`;
-                        searchResults.appendChild(resultItem);
+                        
                     }
                 }
                 
