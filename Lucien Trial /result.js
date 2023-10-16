@@ -75,12 +75,15 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                             const img = document.createElement('img');
                             img.className = "cover-image"
                             img.src = bookCoverURL;
+                            img.alt = "Cover image not available";
                             coverDiv.appendChild(img); 
                             resultItem.appendChild(coverDiv);
                             })
                         .catch((error) => {
-                            console.log(`Error fetching book cover for ${book.title}: ${error.message}`);
-                            resultItem.appendChild(noCoverImageDiv); // Append the no cover image div
+                            console.log(`Error fetching book cover for ${book.title}: ${error.message}`); 
+                            throw error; 
+
+                            // resultItem.appendChild(noCoverImageDiv); // Append the no cover image div
                             });
                         // end of Lucien added
 
