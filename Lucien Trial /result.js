@@ -1,18 +1,17 @@
-const form = document.getElementById("book-search-form")
-const bookshelf = document.getElementsByClassName('bookshelf')[0];
-const submit = document.getElementById("submit");
+
+// create a object key-value pairs extract from research.js, window.location.search will be ?q=harry+potter
+const urlParams = new URLSearchParams(window.location.search);
+//to get the value of the object, which would be the researh keyword client type in
+const searchQuery = urlParams.get("q");
+
+// search keywords to be also showed on the result page 
+const researchH2 = document.getElementById("query-name")
+researchH2.innerText = searchQuery; 
 
 
-
-
-
-form.addEventListener("submit", function (event) {
-        event.preventDefault(); 
-
-        const searchQuery = document.getElementById("search-query").value;
-        const perPage = 8; // Limit to 8 results per page
-        const page = 1; // Page number, start with 1 for the first page
-        const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${perPage}&page=${page}`;
+const perPage = 8; // Limit to 8 results per page
+const page = 1; // Page number, start with 1 for the first page
+const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${perPage}&page=${page}`;
 
 
         // Make a request to the Open Library Search API
@@ -20,7 +19,6 @@ form.addEventListener("submit", function (event) {
             .then(response => {
                 if (!response.ok) throw new Error(response.status);
                 return response.json(); 
-                
                   })
             .then(data =>{
                 console.log(data)
@@ -34,7 +32,7 @@ form.addEventListener("submit", function (event) {
                 data.docs = booksWithRatings.concat(booksWithoutRatings);
                 
 
-                const searchResults = document.getElementById("search-result");
+                const searchResults = document.getElementById("result-div");
                 searchResults.innerHTML = ""; // Clear previous results
 
                 if (data.docs.length > 0) {
@@ -94,7 +92,7 @@ form.addEventListener("submit", function (event) {
                 const searchResults = document.getElementById("search-results");
                 searchResults.innerHTML = "An error occurred while fetching data.";
             });
-    });
+   
 
     // Lucien added below two functions for cover
     

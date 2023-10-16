@@ -1,9 +1,5 @@
 const form = document.getElementById("book-search-form")
-const bookshelf = document.getElementsByClassName('bookshelf')[0];
 const submit = document.getElementById("submit");
-
-
-
 
 
 form.addEventListener("submit", function (event) {
@@ -16,7 +12,12 @@ form.addEventListener("submit", function (event) {
         const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${perPage}&page=${page}`;
 
         // Redirect to the results page with the author name as a query parameter
-        window.location.href = `research-results.html?q=${searchQuery}`;
+        window.location.href = `result.html?q=${searchQuery}`;
+
+
+
+
+
         // Make a request to the Open Library Search API
         fetch(apiUrl)
             .then(response => {
