@@ -98,15 +98,24 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                       
 
                         fetchBookCover(olIdentifier)
+
                         .then((bookCoverURL) => {
                           
                                 img.src = bookCoverURL; // Set the image source when it's available
                            
                         })
                         .catch((error) => {
-                          
-                            resultItem.appendChild(noCoverImageDiv); // Append the no cover image div on error
+                            if (error === 404) {
+                                // Handle the 404 error here
+                                coverDiv.innerHTML = "";
+                                resultItem.appendChild(noCoverImageDiv);
+                                console.log(error); 
+                              } 
+                           
+                             // Append the no cover image div on error
                         });
+
+
 
 
                         
