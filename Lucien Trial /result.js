@@ -8,19 +8,7 @@ const searchQuery = urlParams.get("q");
 const researchH2 = document.getElementById("query-name")
 researchH2.innerText = searchQuery; 
 
-// create the no coverimage block
-const noCoverImageDiv = document.createElement("div");
-noCoverImageDiv.style.width = "120px";
-noCoverImageDiv.style.height = "150px";
-noCoverImageDiv.style.textAlign = "center";
-noCoverImageDiv.style.display = "flex";
-noCoverImageDiv.style.flexDirection = "column";
-noCoverImageDiv.style.justifyContent = "center";
-noCoverImageDiv.style.backgroundColor = "blue"
 
-const noCoverImageText = document.createElement("p");
-noCoverImageText.innerText = "No cover image available";
-noCoverImageDiv.appendChild(noCoverImageText);
 
 // api Url setting
 const perPage = 8; // Limit to 8 results per page
@@ -95,30 +83,39 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
 
                         coverDiv.appendChild(img); 
                         resultItem.appendChild(coverDiv);
-                      
+
+
+                                                // create the no coverimage block
+
+                        const noCoverImageDiv = document.createElement("div");
+                        noCoverImageDiv.style.width = "120px";
+                        noCoverImageDiv.style.height = "150px";
+                        noCoverImageDiv.style.textAlign = "center";
+                        noCoverImageDiv.style.display = "flex";
+                        noCoverImageDiv.style.flexDirection = "column";
+                        noCoverImageDiv.style.justifyContent = "center";
+                        noCoverImageDiv.style.backgroundColor = "blue"
+
+                        const noCoverImageText = document.createElement("p");
+                        noCoverImageText.innerText = "No cover image available";
+                        noCoverImageDiv.appendChild(noCoverImageText);
 
                         fetchBookCover(olIdentifier)
-
                         .then((bookCoverURL) => {
-                          
                                 img.src = bookCoverURL; // Set the image source when it's available
-                           
                         })
                         .catch((error) => {
-                            if (error === 404) {
+                            console.log("1st fire- no book found " , error);  
+                            
                                 // Handle the 404 error here
+                                noCoverImageDiv
                                 coverDiv.innerHTML = "";
                                 resultItem.appendChild(noCoverImageDiv);
-                                console.log(error); 
-                              } 
+                                console.log(" 2nd fire error- no book found " , error);  
+                              
                            
-                             // Append the no cover image div on error
                         });
 
-
-
-
-                        
                     }
                 }
                 
@@ -148,7 +145,7 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
             if (!response.ok) throw new Error(response.status);
             return response.url; // Return the URL of the book cover image
         })
-       
+        
     }
 
     
