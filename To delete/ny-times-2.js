@@ -81,6 +81,7 @@ function createBestsellersLink(category) {
                   results.innerHTML = ''; // Clear existing content
   
                   top5Books.forEach(book => {
+                    console.log(book);
                       const bookDiv = document.createElement('div');
                       bookDiv.innerHTML = `
                           <img src="${book.book_image}" alt="Book Image">
@@ -90,11 +91,11 @@ function createBestsellersLink(category) {
                       `;
                       results.appendChild(bookDiv);
   
-                      console.log('Title:', book.title);
-                      console.log('Author:', book.author);
-                      console.log('Description:', book.description);
-                      console.log('Image:', book.book_image);
-                      console.log('-------------------------');
+                      // console.log('Title:', book.title);
+                      // console.log('Author:', book.author);
+                      // console.log('Description:', book.description);
+                      // console.log('Image:', book.book_image);
+                      // console.log('-------------------------');
                   });
               } else {
                   console.log('Error fetching data or not enough books in the category.');
