@@ -67,7 +67,7 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         const img = document.createElement('img');
                         img.className = "cover-image"
                         img.src = "";
-                        img.alt = `${title}`;
+                       
 
                        
 
@@ -108,10 +108,13 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                             console.log("1st fire- no book found " , error);  
                             
                                 // Handle the 404 error here
-                                noCoverImageDiv
-                                coverDiv.innerHTML = "";
-                                resultItem.appendChild(noCoverImageDiv);
-                                console.log(" 2nd fire error- no book found " , error);  
+                                // noCoverImageDiv
+                                // coverDiv.innerHTML =  noCoverImageDiv;
+                                resultItem.appendChild(coverDiv)
+                                coverDiv.appendChild(noCoverImageDiv);
+                                // coverDiv
+                                
+                                
                               
                            
                         });
