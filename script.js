@@ -66,7 +66,7 @@ form.addEventListener("submit", function (event) {
                        
 
                         // Lucien added
-                        const olIdentifier = extractOLIdentifier(book.seed[1]); // Extract OL identifier
+                        const olIdentifier = extractOLIdentifier(book.seed[0]); // Extract OL identifier
                         fetchBookCover(olIdentifier)
                         .then((bookCoverURL) => {
                             const img = document.createElement('img');
