@@ -67,32 +67,21 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
 
                         // Lucien added
                         const olIdentifier = extractOLIdentifier(book.seed[0]); // Extract OL identifier
-                        fetchBookCover(olIdentifier)
-                        .then((bookCoverURL) => {
-
-                            const coverDiv = document.createElement('div')
-                            coverDiv.className = "cover-div grid-reverse" 
-                            const img = document.createElement('img');
-                            img.className = "cover-image"
-                            img.src = bookCoverURL;
-                            img.alt = "Cover image not available";
-                            coverDiv.appendChild(img); 
-                            resultItem.appendChild(coverDiv);
-                            })
-                        .catch((error) => {
-                            console.log(`Error fetching book cover for ${book.title}: ${error.message}`); 
-                            throw error; 
-
-                            // resultItem.appendChild(noCoverImageDiv); // Append the no cover image div
-                            });
-                        // end of Lucien added
-
-
+              
 
                         const resultItem = document.createElement("div");
                         resultItem.className = "search-result";
                         const resultText = document.createElement("div");
                         resultText.className = "result-text-dv grid-reverse" 
+
+                        const coverDiv = document.createElement('div')
+                        coverDiv.className = "cover-div grid-reverse" 
+                        const img = document.createElement('img');
+                        img.className = "cover-image"
+                        img.src = "";
+                        img.alt = `${title}`;
+
+                       
 
                        
                         resultText.innerHTML =
@@ -103,10 +92,31 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                              <p><strong>First Published:</strong> ${firstPublishYear}</p>`;
                         resultItem.appendChild(resultText); 
                         searchResults.appendChild(resultItem);
-                       
+
+                        coverDiv.appendChild(img); 
+                        resultItem.appendChild(coverDiv);
+                      
+
+                        fetchBookCover(olIdentifier)
+
+                        .then((bookCoverURL) => {
+                          
+                                img.src = bookCoverURL; // Set the image source when it's available
+                           
+                        })
+                        .catch((error) => {
+                            if (error === 404) {
+                                // Handle the 404 error here
+                                coverDiv.innerHTML = "";
+                                resultItem.appendChild(noCoverImageDiv);
+                                console.log(error); 
+                              } 
+                           
+                             // Append the no cover image div on error
+                        });
 
 
-                
+
 
                         
                     }
@@ -133,15 +143,12 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
     }
 
     async function fetchBookCover(olid) {
-        return fetch(`https://covers.openlibrary.org/b/olid/${olid}-M.jpg`)
+        return fetch(`https://covers.openlibrary.org/b/olid/${olid}-M.jpg?default=false`)
         .then((response) => {
             if (!response.ok) throw new Error(response.status);
             return response.url; // Return the URL of the book cover image
         })
-        .catch((error) => {
-            console.log(`Error fetching book cover for ${olid}: ${error.message}`);
-            throw error;
-        });
+       
     }
 
     
