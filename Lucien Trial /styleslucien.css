@@ -59,41 +59,43 @@ footer {
 /* layout for each research items  */
 #result-div{
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 3rem;
   
 }
 
 /* layout inside of each research item  */
 .search-result {
     display: grid; 
-    grid-template-columns: 1fr;
-  
-    gap: 2rem 
+    grid-template-columns: 1fr 3fr;
+    gap: 1rem 
     /* background-image: url('./images/book-green.png'); */
     /* background-size: cover; */
 }
 
 .grid-reverse:first-child {
-    grid-column: 1;
-    grid-row: 2; /* Place the first child in the second row */
+    grid-column: 2;
+    grid-row: 1; 
+    /* Place the first child in the second row */
 }
 
 .grid-reverse:last-child {
     grid-column: 1;
-    grid-row: 1; /* Place the first child in the second row */
+    grid-row: 1;
+    /* Place the first child in the second row */
 }
 
 
 /* Setup the weidth and hight of image  */
 
 .cover-div {
-    width: 100%; 
-    height: 200px 
+    height: 90%; 
+    justify-self: center;
+    align-self: center; 
 }
 
 .cover-div img {
-    height: 100%; 
+    height: 80%; 
     width: auto; 
 }
 
