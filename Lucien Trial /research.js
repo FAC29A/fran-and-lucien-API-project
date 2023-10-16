@@ -14,10 +14,6 @@ form.addEventListener("submit", function (event) {
         // Redirect to the results page with the author name as a query parameter
         window.location.href = `result.html?q=${searchQuery}`;
 
-
-
-
-
         // Make a request to the Open Library Search API
         fetch(apiUrl)
             .then(response => {
@@ -29,16 +25,10 @@ form.addEventListener("submit", function (event) {
                 console.log(data)
                 const booksWithRatings = data.docs.filter(result => result.hasOwnProperty('ratings_average'));
                 const booksWithoutRatings = data.docs.filter(result => !result.hasOwnProperty('ratings_average'));
-
-                // Sort books with ratings_average in descending order
                 booksWithRatings.sort((a, b) => b.ratings_average - a.ratings_average);
-
-                // Combine books with ratings and books without ratings(up to 8 results)
                 data.docs = booksWithRatings.concat(booksWithoutRatings);
-                
-
                 const searchResults = document.getElementById("search-result");
-                searchResults.innerHTML = ""; // Clear previous results
+                searchResults.innerHTML = ""; 
 
                 if (data.docs.length > 0) {
                     for (const index in data.docs) {
@@ -46,7 +36,7 @@ form.addEventListener("submit", function (event) {
                         
                         const title = book.title;
                         const authors = book.author_name ? book.author_name.join(", ") : "Unknown";
-                        //need to filter authors to make sure they are unique
+                      
 
                         const firstPublishYear = book.first_publish_year ? book.first_publish_year : "N/A";
                         const bookRatings = book.ratings_average ? book.ratings_average.toFixed(1) : "Rating not found";
@@ -64,8 +54,6 @@ form.addEventListener("submit", function (event) {
                              <p><strong>First Published:</strong> ${firstPublishYear}</p>`;
                         searchResults.appendChild(resultItem);
                        
-
-                        // Lucien added
                         const olIdentifier = extractOLIdentifier(book.seed[0]); // Extract OL identifier
                         fetchBookCover(olIdentifier)
                         .then((bookCoverURL) => {
@@ -78,7 +66,7 @@ form.addEventListener("submit", function (event) {
                             console.log(`Error fetching book cover for ${book.title}: ${error.message}`);
                            
                             });
-                        // end of Lucien added
+                         // end of Lucien added
 
                 
 
@@ -99,7 +87,7 @@ form.addEventListener("submit", function (event) {
             });
     });
 
-    // Lucien added below two functions for cover
+    // // Lucien added below two functions for cover
     
     function extractOLIdentifier(key) {
         // Remove "/books/" from the key string
