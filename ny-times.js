@@ -104,9 +104,9 @@ function fetchBooksForCategory(category) {
 
                     bookDiv.innerHTML = `
                         <img src="${book.book_image}" alt="Book Image">
-                        Title: ${bookTitle}
-                        Author: ${book.author}
-                        Description: ${book.description}
+                        <p>Title: ${bookTitle}</p>
+                        <p>Author: ${book.author}</p>
+                        <p>Description: ${book.description}</p>
                     `;
                     let amazonLink = document.createElement('a');
                     amazonLink.href = book.amazon_product_url;
