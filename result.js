@@ -79,8 +79,10 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
 
                         const resultItem = document.createElement("div");
                         resultItem.className = "search-result";
+                        
                         const resultText = document.createElement("div");
                         resultText.className = "result-text-dv grid-reverse" 
+
 
                         const coverDiv = document.createElement('div')
                         coverDiv.className = "cover-div grid-reverse" 
