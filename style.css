@@ -1,10 +1,17 @@
 :root {
     --pink-bright : #fda2eed7;
     --green-bright: #82ffb6;
+    --backgound-light: rgb(242, 241, 230); 
+    --footer-dark: rgb(50, 47, 47);
 }
 /* *{
     border: 1px solid black;
 } */
+
+/* Serif fonts
+font-family: 'Abril Fatface', serif;
+font-family: 'DM Serif Display', serif;
+font-family: 'Elsie Swash Caps', serif; */
 
 /* utility classes */
 .center {
@@ -19,18 +26,21 @@ a {
 }
 
 body {
-    /* background-image: url('./images/background-image.jpg'); */
-    background-size: cover;
+    background-color:--backgound-light;
     background-repeat: none;
     height: 100vh;
     max-width: 100vw;
-    font-family: 'Space Mono', monospace;
+    font-family: 'DM Serif Display', serif;
 }
 
 
 /* All pages  */
 h1 {
-    font-family: 'Bungee Shade', sans-serif;
+    font-family: 'Elsie Swash Caps', serif;
+    font-size: 3rem;
+}
+h2 {
+    font-size: 2rem;
 }
 /* 
 .bookshelf {
@@ -49,8 +59,9 @@ footer {
     position: fixed;
     left: 0;
     bottom: 0;
-    background-color: var(--green-bright);
-    height: 2.8rem;
+    background-color: var(--footer-dark);
+    height: 3rem;
+    color: var(--backgound-light);
 }
 
 /* Search results */
@@ -101,22 +112,24 @@ footer {
 
 #bestsellers-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    width: 48rem; 
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     grid-template-rows: 1fr 1fr;
     grid-gap: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .category-links {
     border: 1px solid black;
-    width: 15rem;
-    height: 15rem;
+    width: 12rem;
+    height: 12rem;
     border-radius: 10px;
     padding: 1rem;
     display: flex;
     align-items: center; 
     justify-content: center; 
-    margin-left: auto;
-    margin-right: auto;
+    
 }
 
 /* 

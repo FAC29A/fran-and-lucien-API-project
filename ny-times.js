@@ -53,7 +53,7 @@ function createBestsellersLink(category) {
     // console.log(category.search)
 
     //create title for each link with category name
-    const categoryTitle = document.createElement('h2');
+    const categoryTitle = document.createElement('h3');
     categoryTitle.innerHTML = category.category;
 
     //append each categoryTitle to each link
