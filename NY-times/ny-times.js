@@ -108,6 +108,13 @@ function fetchBooksForCategory(category) {
                         Author: ${book.author}
                         Description: ${book.description}
                     `;
+                    let amazonLink = document.createElement('a');
+                    amazonLink.href = book.amazon_product_url;
+                    amazonLink.textContent = 'Buy it on Amazon';
+                    
+                    bookDiv.appendChild(amazonLink); // 
+                    
+
                     results.appendChild(bookDiv);
                 });
             } else {
