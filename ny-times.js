@@ -110,7 +110,9 @@ function fetchBooksForCategory(category) {
                 results.innerHTML = ''; // Clear existing content
 
                 
+
 //For loop to get info from each book
+
 for (let i = 0; i < 10; i++) {
     const bookDiv = document.createElement('div');
     const bookTitle = top5Books[i].title.split(' ').map(x => x[0] + x.slice(1).toLowerCase()).join(' ');
@@ -131,6 +133,7 @@ for (let i = 0; i < 10; i++) {
     bookDiv.appendChild(amazonLink);
     results.appendChild(bookDiv);
 }
+
         })
         .catch(error => {
             console.error('Error:', error);   
