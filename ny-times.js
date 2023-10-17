@@ -115,24 +115,34 @@ function fetchBooksForCategory(category) {
 
 for (let i = 0; i < 10; i++) {
     const bookDiv = document.createElement('div');
+    // bookDiv.className = "search-result";
     const bookTitle = top5Books[i].title.split(' ').map(x => x[0] + x.slice(1).toLowerCase()).join(' ');
-    const bookImage = top5Books[i].book_image;
+    // const bookImage = top5Books[i].book_image;
+   
+    //create a book image div with the image:
+    const bookImageDiv = document.createElement('div');
+    const bookImage = document.createElement('img');
+    bookImage.src = top5Books[i].book_image;
     bookImage.className = "bookImage-bestseller";
+    bookImageDiv.appendChild(bookImage);
+    
     bookDiv.innerHTML = `
         ${i + 1}.
         <br>
-        <img src="${bookImage}" alt="Book Image">
+    
         <p>Title: ${bookTitle}</p>
         <p>Author: ${top5Books[i].author}</p>
         <p>Description: ${top5Books[i].description}</p>
     `;
+
+    // <img src="${bookImage}" alt="Book Image"> taken from above
 
     const amazonLink = document.createElement('a');
     amazonLink.href = top5Books[i].amazon_product_url;
     amazonLink.textContent = 'Buy it on Amazon';
 
     bookDiv.appendChild(amazonLink);
-    results.appendChild(bookDiv);
+    results.append(bookImageDiv, bookDiv);
 }
 
         })
