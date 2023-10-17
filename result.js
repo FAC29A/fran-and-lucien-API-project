@@ -174,10 +174,11 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
             return response.json; 
         })
         .then((responseJson) => {
-        return responseJson.description
+        return responseJson.description; 
+        console.log(responseJson, "in the function"); 
     })
         .catch(error =>{ 
-            console.error(error);
+            console.error(error, "error in description function");
             return "Description not available"; })
  
         }
