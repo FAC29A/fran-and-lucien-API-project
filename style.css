@@ -56,7 +56,7 @@ h2 {
 
 hr {
     color: var(--footer-dark);
-    width: 2px;
+   
 }
 /* 
 .bookshelf {
@@ -117,14 +117,11 @@ footer {
     height: 90%; 
     justify-self: center;
     align-self: center; 
-
 }
 
 .cover-div img {
     height: 80%; 
-    justify-self: center;
-    align-self: center; 
-
+    width: auto; 
 }
 
 /* Bestsellers styles first page*/
@@ -148,8 +145,6 @@ footer {
     display: flex;
     align-items: center; 
     justify-content: center; 
-    justify-self: center;
-    align-self: center;
     
 }
 
@@ -198,12 +193,12 @@ footer {
     .result-container{
         grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
     }
-    /* .search-result {
+    .search-result {
         width : 10.1rem;
         height: 14.2rem;
         padding-top: 2.3rem;
         font-size: 0.95rem;
-    } */
+    }
 
     body {
         height: 420vh;
