@@ -49,6 +49,26 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         const bookRatings = book.ratings_average ? book.ratings_average.toFixed(1) : "Rating not found";
                         const subject = book.subject_key && book.subject_key.length >= 6 ? book.subject_key[5].replaceAll("_", " ") : "Category not found";
                         const category = subject.slice(0,1).toUpperCase()+subject.slice(1);
+                        const key = book.key; 
+
+
+
+                        const descriptionElement = document.createElement("p");
+                        
+                        fetchDescription(key)
+                        .then(description => {
+                            descriptionElement.innerText = description;
+                             // Inside the `then` block, you can add the description to the resultText
+                            resultText.appendChild(descriptionElement);
+                        })
+                        .catch(error => {
+                            console.error(error);
+                            descriptionElement.innerText = "Description not available";
+                            resultText.appendChild(descriptionElement);
+                        });
+                                            
+
+
                         
 
 
@@ -67,9 +87,9 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         const img = document.createElement('img');
                         img.className = "cover-image"
                         img.src = "";
-                       
 
-                       
+                    
+
 
                        
                         resultText.innerHTML =
@@ -77,9 +97,11 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                              <p><strong>Author(s):</strong> ${authors}</p>
                              <p><strong>Rating:</strong> ${bookRatings}</p>
                              <p><strong>Category:</strong> ${category}</p>
-                             <p><strong>First Published:</strong> ${firstPublishYear}</p>`;
+                             <p><strong>First Published:</strong> ${firstPublishYear}</p>
+                              `
                         resultItem.appendChild(resultText); 
                         searchResults.appendChild(resultItem);
+                        
 
                         coverDiv.appendChild(img); 
                         resultItem.appendChild(coverDiv);
@@ -107,15 +129,9 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         .catch((error) => {
                             console.log("1st fire- no book found " , error);  
                             
-                                // Handle the 404 error here
-                                // noCoverImageDiv
-                                // coverDiv.innerHTML =  noCoverImageDiv;
                                 resultItem.appendChild(coverDiv)
                                 coverDiv.appendChild(noCoverImageDiv);
-                                // coverDiv
-                                
-                                
-                              
+
                            
                         });
 
@@ -151,10 +167,22 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
         
     }
 
+    async function fetchDescription(key) {
+         fetch(`https://openlibrary.org${key}.json`)
+        .then((response) => {
+            if (!response.ok) throw new Error(response.status);
+            return response.json; 
+        })
+        .then((responseJson) => {
+        return responseJson.description
+    })
+        .catch(error =>{ 
+            console.error(error);
+            return "Description not available"; })
+ 
+        }
+
     
-
-    // end of lucien add
-
 
 
     
