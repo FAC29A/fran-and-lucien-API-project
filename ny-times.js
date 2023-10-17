@@ -1,5 +1,6 @@
 // My api key for NY times books
-const apiKey = 'AzUyLIxzSLLZygRO896Q1msZZGAgH6V5';
+const apiKey = 'G5tVt0y42KV4GUeN0flgKYon2BUXPA0Z';
+// old API = "AzUyLIxzSLLZygRO896Q1msZZGAgH6V5";
 
 //The categories of books
 const categories = [
