@@ -11,14 +11,14 @@ const categories = [
     category: "Hardcover Non-Fiction",
     search: "hardcover-nonfiction"
   },
-  {
-    category: "Paperback Fiction",
-    search: "trade-fiction-paperback"
-  },
-  {
-    category: "Paperback Non-Fiction",
-    search: "paperback-nonfiction"
-  },
+  // {
+  //   category: "Paperback Fiction",
+  //   search: "trade-fiction-paperback"
+  // },
+  // {
+  //   category: "Paperback Non-Fiction",
+  //   search: "paperback-nonfiction"
+  // },
   {
     category: "Young Adult",
     search: "young-adult-hardcover"
@@ -97,26 +97,49 @@ function fetchBooksForCategory(category) {
                 const results = document.getElementById('category-top-5');
                 results.innerHTML = ''; // Clear existing content
 
-                top5Books.forEach(book => {
-                    const bookDiv = document.createElement('div');
-                    let bookTitle = book.title.split(' ').map(x=> x[0]+x.slice(1).toLowerCase()).join(' ');
+                
+
+for (let i = 0; i < 10; i++) {
+    const bookDiv = document.createElement('div');
+    const bookTitle = top5Books[i].title.split(' ').map(x => x[0] + x.slice(1).toLowerCase()).join(' ');
+
+    bookDiv.innerHTML = `
+        ${i + 1}.
+        <br>
+        <img src="${top5Books[i].book_image}" alt="Book Image">
+        <p>Title: ${bookTitle}</p>
+        <p>Author: ${top5Books[i].author}</p>
+        <p>Description: ${top5Books[i].description}</p>
+    `;
+
+    const amazonLink = document.createElement('a');
+    amazonLink.href = top5Books[i].amazon_product_url;
+    amazonLink.textContent = 'Buy it on Amazon';
+
+    bookDiv.appendChild(amazonLink);
+    results.appendChild(bookDiv);
+}
+
+                // top5Books.forEach(book => {
+                //     const bookDiv = document.createElement('div');
+                //     let bookTitle = book.title.split(' ').map(x=> x[0]+x.slice(1).toLowerCase()).join(' ');
                     
 
-                    bookDiv.innerHTML = `
-                        <img src="${book.book_image}" alt="Book Image">
-                        <p>Title: ${bookTitle}</p>
-                        <p>Author: ${book.author}</p>
-                        <p>Description: ${book.description}</p>
-                    `;
-                    let amazonLink = document.createElement('a');
-                    amazonLink.href = book.amazon_product_url;
-                    amazonLink.textContent = 'Buy it on Amazon';
+                //     bookDiv.innerHTML = `
+                //         <img src="${book.book_image}" alt="Book Image">
+                //         <p>Title: ${bookTitle}</p>
+                //         <p>Author: ${book.author}</p>
+                //         <p>Description: ${book.description}</p>
+                //     `;
+                //     let amazonLink = document.createElement('a');
+                //     amazonLink.href = book.amazon_product_url;
+                //     amazonLink.textContent = 'Buy it on Amazon';
                     
-                    bookDiv.appendChild(amazonLink); // 
-                    
+                //     bookDiv.appendChild(amazonLink); // 
 
-                    results.appendChild(bookDiv);
-                });
+                //     results.appendChild(bookDiv);
+                // });
+
             } else {
                 console.log('Error fetching data or not enough books in the category.');
             }
