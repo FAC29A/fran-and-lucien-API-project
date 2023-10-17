@@ -116,11 +116,12 @@ function fetchBooksForCategory(category) {
 for (let i = 0; i < 10; i++) {
     const bookDiv = document.createElement('div');
     const bookTitle = top5Books[i].title.split(' ').map(x => x[0] + x.slice(1).toLowerCase()).join(' ');
-
+    const bookImage = top5Books[i].book_image;
+    bookImage.className = "bookImage-bestseller";
     bookDiv.innerHTML = `
         ${i + 1}.
         <br>
-        <img src="${top5Books[i].book_image}" alt="Book Image">
+        <img src="${bookImage}" alt="Book Image">
         <p>Title: ${bookTitle}</p>
         <p>Author: ${top5Books[i].author}</p>
         <p>Description: ${top5Books[i].description}</p>
