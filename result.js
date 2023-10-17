@@ -8,19 +8,7 @@ const searchQuery = urlParams.get("q");
 const researchH2 = document.getElementById("query-name")
 researchH2.innerText = searchQuery; 
 
-// create the no coverimage block
-const noCoverImageDiv = document.createElement("div");
-noCoverImageDiv.style.width = "120px";
-noCoverImageDiv.style.height = "150px";
-noCoverImageDiv.style.textAlign = "center";
-noCoverImageDiv.style.display = "flex";
-noCoverImageDiv.style.flexDirection = "column";
-noCoverImageDiv.style.justifyContent = "center";
-noCoverImageDiv.style.backgroundColor = "blue"
 
-const noCoverImageText = document.createElement("p");
-noCoverImageText.innerText = "No cover image available";
-noCoverImageDiv.appendChild(noCoverImageText);
 
 // api Url setting
 const perPage = 8; // Limit to 8 results per page
@@ -61,6 +49,26 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         const bookRatings = book.ratings_average ? book.ratings_average.toFixed(1) : "Rating not found";
                         const subject = book.subject_key && book.subject_key.length >= 6 ? book.subject_key[5].replaceAll("_", " ") : "Category not found";
                         const category = subject.slice(0,1).toUpperCase()+subject.slice(1);
+                        const key = book.key; 
+
+
+
+                        const descriptionElement = document.createElement("p");
+                        
+                        fetchDescription(key)
+                        .then(description => {
+                            descriptionElement.innerText = description;
+                             // Inside the `then` block, you can add the description to the resultText
+                            resultText.appendChild(descriptionElement);
+                        })
+                        .catch(error => {
+                            console.error(error);
+                            descriptionElement.innerText = "Description not available";
+                            resultText.appendChild(descriptionElement);
+                        });
+                                            
+
+
                         
 
 
@@ -79,9 +87,9 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         const img = document.createElement('img');
                         img.className = "cover-image"
                         img.src = "";
-                        img.alt = `${title}`;
 
-                       
+                    
+
 
                        
                         resultText.innerHTML =
@@ -89,36 +97,44 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                              <p><strong>Author(s):</strong> ${authors}</p>
                              <p><strong>Rating:</strong> ${bookRatings}</p>
                              <p><strong>Category:</strong> ${category}</p>
-                             <p><strong>First Published:</strong> ${firstPublishYear}</p>`;
+                             <p><strong>First Published:</strong> ${firstPublishYear}</p>
+                              `
                         resultItem.appendChild(resultText); 
                         searchResults.appendChild(resultItem);
+                        
 
                         coverDiv.appendChild(img); 
                         resultItem.appendChild(coverDiv);
-                      
+
+
+                                                // create the no coverimage block
+
+                        const noCoverImageDiv = document.createElement("div");
+                        noCoverImageDiv.style.width = "120px";
+                        noCoverImageDiv.style.height = "150px";
+                        noCoverImageDiv.style.textAlign = "center";
+                        noCoverImageDiv.style.display = "flex";
+                        noCoverImageDiv.style.flexDirection = "column";
+                        noCoverImageDiv.style.justifyContent = "center";
+                        noCoverImageDiv.style.backgroundColor = "blue"
+
+                        const noCoverImageText = document.createElement("p");
+                        noCoverImageText.innerText = "No cover image available";
+                        noCoverImageDiv.appendChild(noCoverImageText);
 
                         fetchBookCover(olIdentifier)
-
                         .then((bookCoverURL) => {
-                          
                                 img.src = bookCoverURL; // Set the image source when it's available
-                           
                         })
                         .catch((error) => {
-                            if (error === 404) {
-                                // Handle the 404 error here
-                                coverDiv.innerHTML = "";
-                                resultItem.appendChild(noCoverImageDiv);
-                                console.log(error); 
-                              } 
+                            console.log("1st fire- no book found " , error);  
+                            
+                                resultItem.appendChild(coverDiv)
+                                coverDiv.appendChild(noCoverImageDiv);
+
                            
-                             // Append the no cover image div on error
                         });
 
-
-
-
-                        
                     }
                 }
                 
@@ -148,13 +164,26 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
             if (!response.ok) throw new Error(response.status);
             return response.url; // Return the URL of the book cover image
         })
-       
+        
     }
 
+    async function fetchDescription(key) {
+         fetch(`https://openlibrary.org${key}.json`)
+        .then((response) => {
+            if (!response.ok) throw new Error(response.status);
+            return response.json; 
+        })
+        .then((responseJson) => {
+        return responseJson.description; 
+        console.log(responseJson, "in the function"); 
+    })
+        .catch(error =>{ 
+            console.error(error, "error in description function");
+            return "Description not available"; })
+ 
+        }
+
     
-
-    // end of lucien add
-
 
 
     
