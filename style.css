@@ -3,6 +3,7 @@
     --green-bright: #82ffb6;
     --backgound-light: rgb(242, 241, 230); 
     --footer-dark: rgb(50, 47, 47);
+    --hover-color: rgb(91, 119, 83); 
 }
 /* *{
     border: 1px solid black;
@@ -39,8 +40,23 @@ h1 {
     font-family: 'Elsie Swash Caps', serif;
     font-size: 3rem;
 }
+
+a.center .booksterLogo { 
+font-family: 'Elsie Swash Caps', serif;
+font-size: 3rem;
+}
+
+a.center .booksterLogo:hover {
+ color: var(--hover-color);
+}
+
 h2 {
     font-size: 2rem;
+}
+
+hr {
+    color: var(--footer-dark);
+    width: 2px;
 }
 /* 
 .bookshelf {
