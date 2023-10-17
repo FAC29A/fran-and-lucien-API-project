@@ -11,14 +11,14 @@ const categories = [
     category: "Hardcover Non-Fiction",
     search: "hardcover-nonfiction"
   },
-  {
-    category: "Paperback Fiction",
-    search: "trade-fiction-paperback"
-  },
-  {
-    category: "Paperback Non-Fiction",
-    search: "paperback-nonfiction"
-  },
+  // {
+  //   category: "Paperback Fiction",
+  //   search: "trade-fiction-paperback"
+  // },
+  // {
+  //   category: "Paperback Non-Fiction",
+  //   search: "paperback-nonfiction"
+  // },
   {
     category: "Young Adult",
     search: "young-adult-hardcover"
@@ -40,6 +40,8 @@ const categories = [
 // Bestsellers list displays each category of list
 const bestsellersList = document.getElementById('bestsellers-list');
 
+//Display results here:
+const results = document.getElementById('category-top-5');
 
 // Function to create bestsellers categories links
 function createBestsellersLink(category) {
@@ -75,12 +77,22 @@ function createBestsellersLink(category) {
 // Function to fetch and display the book list for the selected category
 function fetchBooksForCategory(category) {
     fetch(`https://api.nytimes.com/svc/books/v3/lists/current/${category}.json?api-key=${apiKey}`)
-        .then(response => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        if (response.status === 429) {
+          // Handle 429 error
+          throw new Error("Sorry, list not available at this time.");
+        } else {
+          // Handle other errors
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+      } else {
+        return response.json();
+      }
+        })
         .then(data => {
             console.log(data);
-            if (data.status === 'OK') {
-                const top5Books = data.results.books
-
+            const top5Books = data.results.books
                 const pageTitle = document.getElementById('bestsellers-page-title');
                 pageTitle.innerHTML = category;
 
@@ -94,35 +106,38 @@ function fetchBooksForCategory(category) {
                 let result = headingCapitalized.join(' ');
                 headingElement.innerHTML = result;
                 
-                const results = document.getElementById('category-top-5');
+                
                 results.innerHTML = ''; // Clear existing content
 
-                top5Books.forEach(book => {
-                    const bookDiv = document.createElement('div');
-                    let bookTitle = book.title.split(' ').map(x=> x[0]+x.slice(1).toLowerCase()).join(' ');
-                    
+                
 
-                    bookDiv.innerHTML = `
-                        <img src="${book.book_image}" alt="Book Image">
-                        Title: ${bookTitle}
-                        Author: ${book.author}
-                        Description: ${book.description}
-                    `;
-                    let amazonLink = document.createElement('a');
-                    amazonLink.href = book.amazon_product_url;
-                    amazonLink.textContent = 'Buy it on Amazon';
-                    
-                    bookDiv.appendChild(amazonLink); // 
-                    
+//For loop to get info from each book
 
-                    results.appendChild(bookDiv);
-                });
-            } else {
-                console.log('Error fetching data or not enough books in the category.');
-            }
+for (let i = 0; i < 10; i++) {
+    const bookDiv = document.createElement('div');
+    const bookTitle = top5Books[i].title.split(' ').map(x => x[0] + x.slice(1).toLowerCase()).join(' ');
+
+    bookDiv.innerHTML = `
+        ${i + 1}.
+        <br>
+        <img src="${top5Books[i].book_image}" alt="Book Image">
+        <p>Title: ${bookTitle}</p>
+        <p>Author: ${top5Books[i].author}</p>
+        <p>Description: ${top5Books[i].description}</p>
+    `;
+
+    const amazonLink = document.createElement('a');
+    amazonLink.href = top5Books[i].amazon_product_url;
+    amazonLink.textContent = 'Buy it on Amazon';
+
+    bookDiv.appendChild(amazonLink);
+    results.appendChild(bookDiv);
+}
+
         })
         .catch(error => {
-            console.error('Error:', error);
+            console.error('Error:', error);   
+            results.textContent = error.message;
         });
 }
 document.addEventListener("DOMContentLoaded", function () {
@@ -143,3 +158,32 @@ categories.forEach(category => {
 });
 
 });
+
+
+// Old Code
+
+
+
+                // top5Books.forEach(book => {
+                //     const bookDiv = document.createElement('div');
+                //     let bookTitle = book.title.split(' ').map(x=> x[0]+x.slice(1).toLowerCase()).join(' ');
+                    
+
+                //     bookDiv.innerHTML = `
+                //         <img src="${book.book_image}" alt="Book Image">
+                //         <p>Title: ${bookTitle}</p>
+                //         <p>Author: ${book.author}</p>
+                //         <p>Description: ${book.description}</p>
+                //     `;
+                //     let amazonLink = document.createElement('a');
+                //     amazonLink.href = book.amazon_product_url;
+                //     amazonLink.textContent = 'Buy it on Amazon';
+                    
+                //     bookDiv.appendChild(amazonLink); // 
+
+                //     results.appendChild(bookDiv);
+                // });
+
+            // } else {
+            //     console.log('Error fetching data or not enough books in the category.');
+            // }
