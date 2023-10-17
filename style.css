@@ -13,10 +13,13 @@
     margin-left: auto;
     margin-right: auto;
 }
-
+a {
+    color: black; 
+    text-decoration: none;
+}
 
 body {
-    background-image: url('./images/background-image.jpg');
+    /* background-image: url('./images/background-image.jpg'); */
     background-size: cover;
     background-repeat: none;
     height: 100vh;
@@ -25,10 +28,11 @@ body {
 }
 
 
+/* All pages  */
 h1 {
     font-family: 'Bungee Shade', sans-serif;
 }
-
+/* 
 .bookshelf {
     max-width: 100vw; 
   }
@@ -39,7 +43,7 @@ h1 {
     display: block;  
     margin: 0 auto;  
   }
-  
+   */
 footer {
     width: 100vw;
     position: fixed;
@@ -49,13 +53,80 @@ footer {
     height: 2.8rem;
 }
 
+/* Search results */
+
+/* layout for each research items  */
+#result-div{
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 3rem;
+}
+
+/* layout inside of each research item  */
+.search-result {
+    display: grid; 
+    grid-template-columns: 1fr 3fr;
+    gap: 1rem 
+    /* background-image: url('./images/book-green.png'); */
+    /* background-size: cover; */
+}
+
+.grid-reverse:first-child {
+    grid-column: 2;
+    grid-row: 1; 
+    /* Place the first child in the second row */
+}
+
+.grid-reverse:last-child {
+    grid-column: 1;
+    grid-row: 1;
+    /* Place the first child in the second row */
+}
+
+
+/* Setup the width and height of image  */
+
+.cover-div {
+    height: 90%; 
+    justify-self: center;
+    align-self: center; 
+}
+
+.cover-div img {
+    height: 80%; 
+    width: auto; 
+}
+
+/* Bestsellers styles */
+
+#bestsellers-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 0.5rem;
+}
+
+.category-links {
+    border: 1px solid black;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 
 .result-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     grid-template-rows: 1fr 1fr;
     
-}
-
+} */
+/* 
 .search-result {
     width : 14rem;
     height: 16rem;
@@ -68,7 +139,13 @@ footer {
     margin-bottom: 1.5rem;
     margin-left: auto;
     margin-right: auto;
-}
+} */
+
+
+
+
+/* Media queries */
+
 /* Smallest screen */
 @media (max-width:375px) {
     .result-container{
