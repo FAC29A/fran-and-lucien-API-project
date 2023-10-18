@@ -1,5 +1,5 @@
 // My api key for NY times books
-const apiKey = 'G5tVt0y42KV4GUeN0flgKYon2BUXPA0Z';
+const apiKey = 'mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx';
 // old API = "AzUyLIxzSLLZygRO896Q1msZZGAgH6V5";
 
 //The categories of books
@@ -80,13 +80,13 @@ function fetchBooksForCategory(category) {
     fetch(`https://api.nytimes.com/svc/books/v3/lists/current/${category}.json?api-key=${apiKey}`)
     .then((response) => {
       if (!response.ok) {
-        if (response.status === 429) {
-          // Handle 429 error
-          throw new Error("Sorry, list not available at this time.");
-        } else {
-          // Handle other errors
+        // if (response.status === 429) {
+        //   // Handle 429 error
+        //   throw new Error("Sorry, list not available at this time.");
+        // } else {
+        //   // Handle other errors
           throw new Error(`Error ${response.status}: ${response.statusText}`);
-        }
+        // }
       } else {
         return response.json();
       }
