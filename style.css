@@ -1,9 +1,53 @@
 :root {
-    /* --pink-bright : #fda2eed7;
-    --green-bright: #82ffb6; */
+    /* colour variable */
     --backgound-light: rgb(242, 241, 230); 
     --footer-dark: rgb(50, 47, 47);
+    --blackest: #000000; 
+    --dark-grey:#191919; 
+    --light-grey:#D9D9D9; 
+    --whitest: #FFFFFF; 
+    /* fontsize for large screen */
+    --font-size-125: 1.25rem;  
+    --font-size-200: 2rem; 
+    --font-size-225: 2.25rem; 
+    --font-size-300: 3rem; 
+    --font-size-400: 4rem; 
+    /* fontsize for mobile  */
+    --font-size-250: 2.5rem; 
+    --font-size-100: 1rem; 
+    --font-size-150: 1.5rem; 
+    --foot-size-087: 0.875rem; 
+    --font-size-075: 0.75rem;  
+
+    /* spacing-horizontally */
+    --spacing-h-margin-200:2rem; 
+
+    /* spacing-vertically */
+    --spacing-v-margin-200:2rem; 
+
+    /* line-thickness */
+
+    --line-s: 1px; 
+    --line-m: 1.5px; 
+    --line-l: 2px; 
+ 
+
+
+
+    /* font-family */
+  
+
+
 }
+
+
+html * {
+    box-sizing: border-box;
+}
+
+
+
+
 /* *{
     border: 1px solid black;
 } */
@@ -33,20 +77,114 @@ body {
     font-family: 'DM Serif Display', serif;
 }
 
+/* index page css  */
+/* header is for log container */
+header { 
+ 
+   height: 9.5rem; 
+   padding-left: var(--spacing-h-margin-200); 
+   display: flex; 
+   align-items: center;
+   border-bottom: var(--line-m) solid var(--blackest); 
+   
+}
+
+#search-section-container {
+    
+    height: 24.5rem; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#search-instruction {
+    font-size: 2rem ; 
+    display: block; 
+    font-family: "DM serif dispaly"; 
+    font-weight: 400; 
+    padding-bottom: 3rem; 
+    text-align: center; 
+}
+
+
+#book-search-form{
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+}
+/* 
+the container for search input and button */
+#search-bar {
+    width: 100%; 
+    max-width: 700px;
+    background-color: var(--light-grey); 
+    display: flex; 
+    justify-content: center;
+    padding-left: 1rem; 
+    border: var(--line-m) solid black
+    
+}
+#search-bar input {
+    background: transparent; 
+    flex: 1; 
+    border: 0; 
+    outline: none; 
+    font-size: var(--font-size-150); 
+    color: var(--blackest)
+
+    
+
+}
+
+::placeholder{
+    color: var(--dark-grey)
+}
+
+#search-bar button img{
+    width: 30px; 
+
+}
+#search-bar button {
+    background-color: var(--blackest);
+    width: 8rem ; 
+    height: 3rem;  
+    border: none; 
+}
+
+.left-styling-block{
+    height: 3rem; 
+    width: 1rem; 
+    background-color: var(--blackest);
+    margin-right: 0.3rem 
+}
+
+
+
+
+
+
+
+
 
 /* All pages  */
+
+/* h1 is for logo  */
 h1 {
     font-family: 'Elsie Swash Caps', serif;
-    font-size: 3rem;
+    font-size: 4rem;
+
 }
 h2 {
     font-size: 2rem;
 }
 
-hr {
+/* hr {
     color: var(--footer-dark);
    
-}
+} */
 /* 
 .bookshelf {
     max-width: 100vw; 
@@ -99,7 +237,6 @@ footer {
     grid-row: 1;
     /* Place the first child in the second row */
 }
-
 
 /* Setup the width and height of image  */
 /* container of cover image  */
@@ -193,6 +330,7 @@ footer {
     }
 }
 
+
 /* small screen */
 @media (min-width:376px) and (max-width:720px) {
     .result-container{
@@ -208,11 +346,9 @@ footer {
     }
 }
 
-
 /* mid-size to large */
 @media (min-width:721px) and (max-width:1000px){
     body {
         height: 150vh;
-        
     }
 } 

@@ -20,21 +20,38 @@
     rel="stylesheet">
     <title>Bookster</title>
 </head>
-<body class="center">
+<body>
+    <!-- header container for logo  -->
+    <header>
     <h1>Bookster</h1>
-    <hr>
+    </header>
+
+    <!-- section: research bar  -->
+    <section id="search-section-container">
     <form id="book-search-form">
-        <label for="search-query">Search books by title, author, or theme:</label>
-        <br>
-        <input type="text" id="search-query" name="search-query" required>
-        <button type="submit" id="submit">Search</button>
+        <label for="search-query" id="search-instruction">Search books by title, author, or theme:</label>
+        <!-- search bar grouping  -->
+        <div id="search-bar">
+        <input type="text" id="search-query" name="search-query" placeholder="search" required>
+        <div class="left-styling-block"></div>
+        <button aria-label="submit" type="submit" id="submit"><img alt="" src="images/arrow-right-white.png"></button>
+        </div>
     </form>
+    </section>
 
-    <hr>
-    <!-- <div id="search-result" class="result-container"></div>-->
-
+    <!-- section: genre  -->
+    <section> 
     <h2>NY Times Bestsellers</h2>
     <div id="bestsellers-list"></div>
+    </section>
+
+    <!-- section: bestsellers top 5 -->
+    <section>
+    
+    </section>
+
+    
+    
 
     
    

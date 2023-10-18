@@ -151,6 +151,8 @@ for (let i = 0; i < 10; i++) {
             console.error('Error:', error);   
             results.textContent = error.message;
         });
+
+        
 }
 document.addEventListener("DOMContentLoaded", function () {
 // Retrieve the category from the query parameter (e.g. "?category=hardcover-fiction")
