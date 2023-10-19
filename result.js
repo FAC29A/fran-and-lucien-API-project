@@ -33,7 +33,7 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                 // Combine books with ratings and books without ratings(up to 8 results)
                 data.docs = booksWithRatings.concat(booksWithoutRatings);
                 
-
+                // searchResults(#result-div) =  has many of dynamically produce result divs 
                 const searchResults = document.getElementById("result-div");
                 searchResults.innerHTML = ""; // Clear previous results
 
@@ -54,17 +54,30 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
 
 
                         const descriptionElement = document.createElement("p");
+
+                        // descriptionContainer = the div container that includes only descriptin  
+                        const descriptionContainer = document.createElement("div")
+
                         
                         fetchDescription(key)
                         .then(description => {
                             descriptionElement.innerText = description;
-                             // Inside the `then` block, you can add the description to the resultText
-                            resultText.appendChild(descriptionElement);
+                            // layer 4:   description <p> append to its own container div
+                            descriptionContainer.appendChild(descriptionElement);
+                            // layer 3: and then text container that has other text info appendchild description div
+                            resultText.appendChild(descriptionContainer)
+                            
+                            
+
+
                         })
                         .catch(error => {
                             console.error(error);
                             descriptionElement.innerText = "Description not available";
-                            resultText.appendChild(descriptionElement);
+                            // layer 4:   description <p> append to its own container div
+                            descriptionContainer.appendChild(descriptionElement);
+                            // layer 3: and then text container that has other text info appendchild description div
+                            resultText.appendChild(descriptionContainer)
                         });
                                             
 
@@ -76,40 +89,58 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         // Lucien added
                         const olIdentifier = extractOLIdentifier(book.seed[0]); // Extract OL identifier
               
-
+                        // .research-result (resultItem) = the container with 3 divs(title/author div, image div,text-div )
                         const resultItem = document.createElement("div");
                         resultItem.className = "search-result";
                         
+                        // resultText (.result-text-div) =  the div that has all text except title and author
                         const resultText = document.createElement("div");
-                        resultText.className = "result-text-dv grid-reverse" 
+                        resultText.className = "result-text-dv " 
 
 
+                        // coverDvi (.cover-div) = container for image 
                         const coverDiv = document.createElement('div')
-                        coverDiv.className = "cover-div grid-reverse" 
+                        coverDiv.className = "cover-div" 
                         const img = document.createElement('img');
                         img.className = "cover-image"
                         img.src = "";
 
-                    
 
+                        const titleAuthorDiv = document.createElement("div");
+                        titleAuthorDiv.className = "title-author-div" 
 
-                       
+                        titleAuthorDiv.innerHTML =
+                            `<p class="result-item-title">${title}</p>
+                             <p class="author-italic">by ${authors}</p>
+                            `
+
                         resultText.innerHTML =
-                            `<p><strong>Title:</strong> ${title}</p>
-                             <p><strong>Author(s):</strong> ${authors}</p>
-                             <p><strong>Rating:</strong> ${bookRatings}</p>
-                             <p><strong>Category:</strong> ${category}</p>
-                             <p><strong>First Published:</strong> ${firstPublishYear}</p>
+                            `
+                                <div class="rating-category-container"> 
+                                <p>Ratings: ${bookRatings}</p>
+                                <p><strong>Category:</strong> ${category}</p>
+                                <p><strong>First Published:</strong> ${firstPublishYear}</p>
+                                </div>
+                             
                               `
-                        resultItem.appendChild(resultText); 
+                        // layer 2 : the medium div includes 3 element div (image, title, text) append the div that contain text 
+                        resultItem.appendChild(titleAuthorDiv);
+                     
+                        // layer 2 : the medium div includes 3 element div (image, title, text) append the div that contain text 
+                        resultItem.appendChild(resultText);
+                        // layer 1: the big div append  all dynamic produces result divs (that has 3 elements in each )
                         searchResults.appendChild(resultItem);
                         
-
+    
+                        // layer 3:   image elemennt append to a container
                         coverDiv.appendChild(img); 
+                        // layer 2:  the medium div includes 3 element div (image, title, text) append the div that contain image 
                         resultItem.appendChild(coverDiv);
 
 
-                                                // create the no coverimage block
+
+
+                        // create the no coverimage block
 
                         const noCoverImageDiv = document.createElement("div");
                         noCoverImageDiv.style.width = "120px";
