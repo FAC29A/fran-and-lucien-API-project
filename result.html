@@ -24,13 +24,26 @@
     <title>Bookster</title>
 </head>
 <body >
-    <a href="index.html" class="center"><h1 class="booksterLogo">Bookster</h1></a>
-    <hr>
-    <h2 class="center">Results for "<span id="query-name"></span>"</h2>
+    <!-- header container for logo  -->
+    <header>
+        <a href="index.html">
+            <h1 class="booksterLogo">Bookster</h1>
+            </a>
+        </header>
+    
+    <!-- result text banner -->
+    <section class="section-banner">
+    <div class = "padding-for-banner-text">
+    <h2>Results for "<span id="query-name"></span>"</h2>
+    </div>
+    </section>
 
-
+    <!-- result dynamic section  -->
+    <!-- the <section> mainly is used to add padding   -->
+    <section class="result-section-container">
     <div id="result-div"></div>
-
+    </section>
+    
     
     
     <footer>Built by Fran and Lucien</footer>
