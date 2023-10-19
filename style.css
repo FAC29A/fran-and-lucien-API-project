@@ -283,16 +283,16 @@ footer {
 /* ----------------------------- search results page ----------------------------------------*/
 /* result text banner */
 
-
-.result-section-container{
-  
-    padding: 2rem; 
+.result-top-line {
+    border-top: 2px solid var(--blackest); 
+    width: 100vw; 
 }
 
 /* big container to fix all the results  */
 #result-div{
     display: grid; 
-    /* gap: 3rem; */
+    gap: 2rem;
+   
     
 }
 
@@ -301,18 +301,22 @@ footer {
     display: grid; 
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 1fr 3fr; 
+    max-width: 1000px; 
+    padding-left: 2rem; 
+   
     
     /* background-image: url('./images/book-green.png'); */
     /* background-size: cover; */
 }
 
 .title-author-div{
-    background-color: red;
+    
     grid-column: span 2 ;
     height: auto;
     padding: 0; 
     font-weight: 300; 
     line-height: 0.5; 
+    
    
 }
 /* inner html layout */
@@ -326,8 +330,11 @@ footer {
  }
  /* text div (excluding titile and author), to manipulate the space between category and description   */
  .result-text-dv {
-    background-color: green;
+    /* background-color: green; */
     display: grid; 
+    padding-top: 1rem; 
+    font-size: 1rem; 
+    
  }
 
 
@@ -349,17 +356,57 @@ footer {
 
 /* Setup the width and height of image  */
 /* container of cover image  */
-.cover-div {
-    justify-self: center;
-    align-self: center; 
-}
+/* .cover-div { */
+    /* justify-self: center;
+    align-self: center;  */
+/* } */
 
 /* image inside of cover div  */
-.cover-div img {
-    justify-self: center;
-    align-self: center; 
-    max-height: 180px; 
+/* .cover-div img { */
+    /* justify-self: center;
+    align-self: center;  */
+    /* max-height: 180px;  */
+/* } */
+
+
+
+
+
+.no-cover-image-div{
+    background-color: var(--light-grey);
+    width: 180px; 
+    height: 276px; 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    border: 1.5px solid var(--blackest); 
+
+
 }
+
+.cover-inner-frame {
+    height: 230px; 
+    width: 150px; 
+    border: 1px solid var(--dark-grey); 
+    padding: 10px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    
+}
+
+.cover-title {
+    color: var(--dark-grey); 
+    font-size: 0.8rem; 
+}
+
+.cover-author {
+    color: var(--dark-grey); 
+    font-size: 0.7rem
+}
+
 
 
 /* Bestsellers styles  - now become genre section */

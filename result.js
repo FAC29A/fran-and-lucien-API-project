@@ -88,6 +88,11 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
 
                         // Lucien added
                         const olIdentifier = extractOLIdentifier(book.seed[0]); // Extract OL identifier
+                        
+                        // create a div on each research result for the top border purpoose
+                        const resultTopLine = document.createElement("div"); 
+                        resultTopLine.className = "result-top-line";
+
               
                         // .research-result (resultItem) = the container with 3 divs(title/author div, image div,text-div )
                         const resultItem = document.createElement("div");
@@ -128,8 +133,16 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                      
                         // layer 2 : the medium div includes 3 element div (image, title, text) append the div that contain text 
                         resultItem.appendChild(resultText);
-                        // layer 1: the big div append  all dynamic produces result divs (that has 3 elements in each )
-                        searchResults.appendChild(resultItem);
+
+                        // layer 1: the div for the top borderline 
+                        resultTopLine.appendChild(resultItem); 
+                        
+                        // layer 0: the big div append  all dynamic produces result divs (that has 3 elements in each )
+                        searchResults.appendChild(resultTopLine);
+
+                        
+                       
+                        
                         
     
                         // layer 3:   image elemennt append to a container
@@ -143,16 +156,16 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         // create the no coverimage block
 
                         const noCoverImageDiv = document.createElement("div");
-                        noCoverImageDiv.style.width = "120px";
-                        noCoverImageDiv.style.height = "150px";
-                        noCoverImageDiv.style.textAlign = "center";
-                        noCoverImageDiv.style.display = "flex";
-                        noCoverImageDiv.style.flexDirection = "column";
-                        noCoverImageDiv.style.justifyContent = "center";
-                        noCoverImageDiv.style.backgroundColor = "blue"
-
-                        const noCoverImageText = document.createElement("p");
-                        noCoverImageText.innerText = "No cover image available";
+                        noCoverImageDiv.className = "no-cover-image-div"
+                        
+                        const noCoverImageText = document.createElement("div");
+                        noCoverImageText.innerHTML = 
+                        `
+                        <div class="cover-inner-frame">
+                        <p class="cover-title">${title}</p>
+                        <p class="cover-author">${authors}</p>
+                        </div>
+                        `
                         noCoverImageDiv.appendChild(noCoverImageText);
 
                         fetchBookCover(olIdentifier)
