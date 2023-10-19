@@ -289,7 +289,7 @@ footer {
 }
 
 /* big container to fix all the results  */
-#result-div{
+#result-div #category-top-5 {
     display: grid; 
     gap: 2rem;
    
@@ -350,6 +350,15 @@ footer {
     grid-column: 1;
     grid-row: 1;
     /* Place the first child in the second row */
+}
+
+
+/* 
+------image size control  */
+.cover-image{
+width: 80%;
+height: auto; 
+object-fit: scale-down;
 }
 
 
