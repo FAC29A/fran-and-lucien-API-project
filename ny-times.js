@@ -122,7 +122,21 @@ for (let i = 0; i < 10; i++) {
 
     const bookDiv = document.createElement('div');
     // ------Lucien create classname
-    bookDiv.className = "result-text-dv"
+    bookDiv.className = "title-author-div"; 
+
+    // ----Lucien create a div for description  and amazon link 
+    const descriptionAndAmazonDiv = document.createElement('div'); 
+    descriptionAndAmazonDiv.className = "result-text-dv"; 
+
+    //-----Lucien : this is the container div that has 3 elements in it (image, text, title/author)
+    const searchResult = document.createElement('div'); 
+    searchResult.className = "search-result"; 
+
+    // ------lucien: this is container for topline purpose and it wrap around the div that contain 3 elements image, text, title/author)
+    const resultTopLine = document.createElement('div'); 
+    resultTopLine.className = "result-top-line"
+
+
 
     // bookDiv.className = "search-result";
     const bookTitle = top5Books[i].title.split(' ').map(x => x[0] + x.slice(1).toLowerCase()).join(' ');
@@ -130,6 +144,8 @@ for (let i = 0; i < 10; i++) {
    
     //create a book image div with the image:
     const bookImageDiv = document.createElement('div');
+    bookImageDiv.className = "cover-div"; 
+
     const bookImage = document.createElement('img');
     bookImage.src = top5Books[i].book_image;
     // -------------Lucien change belowline
@@ -141,11 +157,17 @@ for (let i = 0; i < 10; i++) {
         ${i + 1}.
         
     
-        <p>Title: ${bookTitle}</p>
-        <p>Author: ${top5Books[i].author}</p>
-        // ------lucien move description to another div
-        <p>Description: ${top5Books[i].description}</p>
+        <p class="result-item-title">${bookTitle}</p>
+        <p class="author-italic">${top5Books[i].author}</p>
+       
     `;
+
+  //  --------Lucien add inner html to the new created div of description and amazon link 
+    descriptionAndAmazonDiv.innerHTML = `
+
+    <p>Description: ${top5Books[i].description}</p>
+
+    `
 
 
 
@@ -155,8 +177,46 @@ for (let i = 0; i < 10; i++) {
     amazonLink.href = top5Books[i].amazon_product_url;
     amazonLink.textContent = 'Buy it on Amazon';
 
-    bookDiv.appendChild(amazonLink);
-    results.append(bookImageDiv, bookDiv);
+
+    // -----lucien change to append to description and amazon link div 
+    // bookDiv.appendChild(amazonLink);
+
+    // level 0  remember to figure this out in the last step 
+    // results.append(bookImageDiv, bookDiv);
+    // new added 
+
+    // level 3:  amazon link append to description and amazonLinkDiv 
+    descriptionAndAmazonDiv.appendChild(amazonLink); 
+
+     //level 2:  title/author div append to a medium div that contain  3 elements ( text, title, image) 
+     searchResult.appendChild(bookDiv); 
+
+    // level 2: description and amazon link append to a medium div that contain  3 elements ( text, title, image) 
+      searchResult.appendChild(descriptionAndAmazonDiv); 
+
+
+    //level 2:  image div append to a medium div that contain  3 elements ( text, title, image) 
+    searchResult.appendChild(bookImageDiv); 
+
+
+    // level 1: medium div that contain  3 elements ( text, title, image)  append to the div for topline purpose
+    resultTopLine.appendChild(searchResult)
+
+    // level 0: append the topline purpose div to result div (this result div is from getElementById)
+    results.appendChild(resultTopLine)
+
+
+
+
+
+    
+
+
+
+
+
+
+
 }
 
         })
