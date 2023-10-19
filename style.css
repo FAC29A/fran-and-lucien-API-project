@@ -77,11 +77,13 @@ body {
     font-family: 'DM Serif Display', serif;
 }
 
-/* index page css  */
+/* ------ Index page ----------------------*/
+
+
 /* header is for log container */
 header { 
  
-   height: 9.5rem; 
+   height: 5.5rem; 
    padding-left: var(--spacing-h-margin-200); 
    display: flex; 
    align-items: center;
@@ -91,7 +93,7 @@ header {
 
 #search-section-container {
     
-    height: 24.5rem; 
+    height: 18rem; 
     display: flex; 
     align-items: center;
     justify-content: center;
@@ -99,11 +101,11 @@ header {
 }
 
 #search-instruction {
-    font-size: 2rem ; 
+    font-size: 1.8rem ; 
     display: block; 
     font-family: "DM serif dispaly"; 
-    font-weight: 400; 
-    padding-bottom: 3rem; 
+    font-weight: 500; 
+    padding-bottom: 2rem; 
     text-align: center; 
 }
 
@@ -115,11 +117,12 @@ header {
     justify-content: center;
    
 }
+
 /* 
 the container for search input and button */
 #search-bar {
     width: 100%; 
-    max-width: 700px;
+    max-width: 600px;
     background-color: var(--light-grey); 
     display: flex; 
     justify-content: center;
@@ -133,9 +136,7 @@ the container for search input and button */
     border: 0; 
     outline: none; 
     font-size: var(--font-size-150); 
-    color: var(--blackest)
-
-    
+    color: var(--blackest); 
 
 }
 
@@ -161,6 +162,55 @@ the container for search input and button */
     margin-right: 0.3rem 
 }
 
+/* main container use to grid genre and top 5 sections */
+main { 
+    display: grid; 
+    grid-template-columns: 1.5fr 1fr; 
+    
+}
+
+#genre-section\ {
+   
+    grid-column: 2;
+    grid-row: 1;
+    border-left: 2px solid black;
+   
+ }
+
+#top5-section\ {
+    grid-column: 1;
+    grid-row: 1;
+
+ }
+
+
+
+
+/* genre section  */
+/* title banner container  */
+
+
+.section-banner {
+    height: auto; 
+    
+    
+    width: 100%; 
+    outline: 1.5px solid black; 
+    margin: 0; 
+    padding: 0; 
+}
+
+.padding-for-banner-text {
+    background-color: var(--blackest);
+    width: fit-content; 
+    padding-left: 2rem; 
+    padding-right: 4rem;  
+    line-height: 1; 
+}
+
+.padding-for-banner-text h2{
+    color: var(--backgound-light)
+}
 
 
 
@@ -169,12 +219,12 @@ the container for search input and button */
 
 
 
-/* All pages  */
+/* ------ All pages ----------------------*/
 
 /* h1 is for logo  */
 h1 {
     font-family: 'Elsie Swash Caps', serif;
-    font-size: 4rem;
+    font-size: 2.5rem;
 
 }
 h2 {
@@ -199,15 +249,41 @@ h2 {
    */
 footer {
     width: 100vw;
-    position: fixed;
+    /* position: fixed; */
     left: 0;
     bottom: 0;
     background-color: var(--footer-dark);
-    height: 3rem;
+    height: 10rem;
     color: var(--backgound-light);
+    display: grid; 
+    grid-template-rows: repeat(24, 1fr);
+    
 }
 
-/* Search results */
+#footer-first-line {
+  
+    
+    border-top: 2px solid var(--backgound-light); 
+    height: 2rem ; 
+    grid-row: 6
+   
+}
+
+#footer-second-line {
+    
+    grid-row: 16; 
+    padding-left: 2rem;
+    border-top: 1.5px solid var(--backgound-light); 
+    border-bottom: 1.5px solid var(--backgound-light); 
+
+}
+
+
+
+
+
+/* ------ research results page ----------------------*/
+
 
 /* big container to fix all the results  */
 #result-div{
@@ -253,27 +329,27 @@ footer {
 }
 
 
-/* Bestsellers styles */
+/* Bestsellers styles  - now become genre section */
 
 #bestsellers-list {
     display: grid;
-    width: 48rem; 
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 0.5rem;
-    margin-left: auto;
-    margin-right: auto;
+    /* width: 48rem;  */
+    /* grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); */
+    /* grid-template-rows: 1fr 1fr; */
+    /* grid-gap: 0.5rem; */
+    /* margin-left: auto;
+    margin-right: auto; */
 }
 
 .category-links {
-    border: 1px solid black;
-    width: 12rem;
-    height: 12rem;
-    border-radius: 10px;
+    border-top: 1px solid black;
+    /* width: 12rem; */
+    height: 10rem;
+    /* border-radius: 10px; */
     padding: 1rem;
-    display: flex;
+    /* display: flex;
     align-items: center; 
-    justify-content: center; 
+    justify-content: center;  */
     
 }
 /* 
@@ -308,9 +384,7 @@ footer {
 } */
 
 
-
-
-/* Media queries */
+/* ------ Media queries ----------------------*/
 
 /* Smallest screen */
 @media (max-width:375px) {
