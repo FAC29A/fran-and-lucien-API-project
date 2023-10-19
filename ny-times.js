@@ -117,7 +117,13 @@ function fetchBooksForCategory(category) {
 //For loop to get info from each book
 
 for (let i = 0; i < 10; i++) {
+
+
+
     const bookDiv = document.createElement('div');
+    // ------Lucien create classname
+    bookDiv.className = "result-text-dv"
+
     // bookDiv.className = "search-result";
     const bookTitle = top5Books[i].title.split(' ').map(x => x[0] + x.slice(1).toLowerCase()).join(' ');
     // const bookImage = top5Books[i].book_image;
@@ -126,17 +132,22 @@ for (let i = 0; i < 10; i++) {
     const bookImageDiv = document.createElement('div');
     const bookImage = document.createElement('img');
     bookImage.src = top5Books[i].book_image;
-    bookImage.className = "bookImage-bestseller";
+    // -------------Lucien change belowline
+    // bookImage.className = "bookImage-bestseller";
+    bookImage.className = "cover-image";
     bookImageDiv.appendChild(bookImage);
     
     bookDiv.innerHTML = `
         ${i + 1}.
-        <br>
+        
     
         <p>Title: ${bookTitle}</p>
         <p>Author: ${top5Books[i].author}</p>
+        // ------lucien move description to another div
         <p>Description: ${top5Books[i].description}</p>
     `;
+
+
 
     // <img src="${bookImage}" alt="Book Image"> taken from above
 
