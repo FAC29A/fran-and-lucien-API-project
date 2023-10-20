@@ -77,6 +77,8 @@ function createBestsellersLink(category) {
 }
 
 
+
+
 // Function to fetch and display the book list for the selected category
 function fetchBooksForCategory(category) {
     fetch(`https://api.nytimes.com/svc/books/v3/lists/current/${category}.json?api-key=${apiKey}`)
@@ -208,15 +210,6 @@ for (let i = 0; i < 10; i++) {
 
 
 
-
-    
-
-
-
-
-
-
-
 }
 
         })
@@ -227,6 +220,10 @@ for (let i = 0; i < 10; i++) {
 
 
 }
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
 // Retrieve the category from the query parameter (e.g. "?category=hardcover-fiction")
 const urlParams = new URLSearchParams(window.location.search);
@@ -243,8 +240,53 @@ fetchBooksForCategory(category);
 categories.forEach(category => {
   createBestsellersLink(category);
 });
+// Lucien trial
+indexTop5Rendering()
+// end of Lucien trial 
 
 });
+
+
+// lucien trial for fetch info oon the index page 
+
+function indexTop5Rendering() {
+const top5Content = document.getElementById("top5-content"); 
+
+fetch("https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-nonfiction.json?api-key=mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx")
+    .then((response) => {
+      if (!response.ok) {
+       
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
+      
+      } else {
+        return response.json();
+      }
+        })
+        .then(data => {
+            console.log(data);
+            const indexPageTop5 = data.results.books
+
+            for (let j = 0; j <=5; j++){
+
+              const IndexTop5Title = indexPageTop5[j].title
+
+              top5Content.innerHTML = `
+              <h3>${IndexTop5Title}</h3>
+              `
+              }
+          
+          
+          }
+               
+        )
+
+
+
+}
+
+
+
+// end of Lucien trial 
 
 
 // Old Code
