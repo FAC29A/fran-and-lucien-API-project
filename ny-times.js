@@ -264,15 +264,42 @@ fetch("https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-b
         })
         .then(data => {
             console.log(data);
-            const indexPageTop5 = data.results.books
+            const indexPageTop5 = data.results.books; 
 
-            for (let j = 0; j <=5; j++){
+            for (let j = 0; j <3; j++) {
 
-              const IndexTop5Title = indexPageTop5[j].title
+              const indexBookRankDiv = document.createElement('div');
+              indexBookRankDiv.className = "index-book-rank-div"; 
 
-              top5Content.innerHTML = `
-              <h3>${IndexTop5Title}</h3>
+              indexBookRankDiv.innerHTML = `
+              <p class="index-rank">No.${indexPageTop5[j].rank}</p>
               `
+
+              const indexTitleAuthorDiv = document.createElement('div');
+              indexTitleAuthorDiv.className = "index-title-author-div"; 
+              indexTitleAuthorDiv.innerHTML = `
+              <p class="index-top-5-title">${indexPageTop5[j].title}</p>
+              <p class="index-top-5-author">by ${indexPageTop5[j].author}</p>
+              `
+
+              const indexCoverImageDiv = document.createElement('div'); 
+              indexCoverImageDiv.className = "index-cover-image-div"
+              indexCoverImageDiv.innerHTML = `
+              <img class="index-cover-image" alt="cover for ${indexPageTop5[j].title}" src= " ${indexPageTop5[j].book_image}"">
+              `
+
+              const indexBestsellerItemDiv = document.createElement('div')
+              indexBestsellerItemDiv.className = "index-bestseller-item-div"
+
+              // level 3: each bestseller item append 3 children element ( rank, title/author, cover)
+              indexBestsellerItemDiv.appendChild(indexBookRankDiv); 
+              indexBestsellerItemDiv.appendChild(indexTitleAuthorDiv); 
+              indexBestsellerItemDiv.appendChild(indexCoverImageDiv); 
+
+              // level 2: each bestseller item (in top 5 list there are 5 items) then be appended to a parent div 
+              top5Content.appendChild(indexBestsellerItemDiv); 
+
+
               }
           
           
