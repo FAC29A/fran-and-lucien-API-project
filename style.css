@@ -134,7 +134,7 @@ the container for search input and button */
 #search-bar {
     width: 80vh; 
     max-width: 600px;
-    background-color: var(--light-grey); 
+    background-color: var(--lightest-grey); 
     display: flex; 
     justify-content: center;
     padding-left: 1rem; 
@@ -195,6 +195,7 @@ main {
 #top5-section\ {
     grid-column: 1;
     grid-row: 1;
+  
 
  }
 
@@ -235,11 +236,97 @@ main {
     background-color: var(--blackest);
     padding: 0; 
     margin: 0; 
+}
+
+
+
+
+
+/* #####index page: bestseller top 5 section  */
+
+#top5-content {
+    display: grid; 
+    gap: 4rem; 
+    padding: 4rem; 
+}
+
+
+.index-bestseller-item-div {
+    border: var(--line-s) solid var(--blackest); 
+    display: grid; 
+    grid-template-columns: minmax(min-content,2fr) minmax(10rem,1fr); 
+    grid-template-rows: 1rem 15rem;
+    padding: 2rem; 
+    grid-column-gap: 3rem;  
+    border-radius: 15px;
     
-    
-  
+}
+
+.index-book-rank-div{
+    grid-column: span 2;
+    grid-row: 1; 
+    background-color:  var(--lightest-grey); 
+    border: var(--line-s) solid var(--blackest); 
+    width: fit-content; 
+    overflow: hidden;
+    width: 5rem; 
+    height: 5rem; 
+    border-radius: 50%;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-top: -3rem; 
+    margin-left: -3rem; 
 
 }
+
+.index-rank {
+    font-size: var(--font-size-150); 
+    font-family: var(--font-dm);
+    color: var(--blackest); 
+    
+}
+
+.index-title-author-div{
+    grid-column: 1; 
+    grid-row: 2; 
+}
+
+.index-top-5-title {
+    font-size: var(--font-size-225); 
+    font-family: var(--font-dm);
+    color: var(--blackest); 
+    margin-bottom: 0;
+}
+
+.index-top-5-author {
+    font-size: var(--font-size-100); 
+    font-family: var(--font-source);
+    color: var(--blackest); 
+    font-style: italic; 
+    font-weight: 300; 
+}
+
+
+.index-cover-image-div {
+    grid-column: 2; 
+    grid-row: 2; 
+    align-self: center;
+    justify-self: center;
+}
+
+.index-cover-image{
+    height: 14rem; 
+    width: 100%; 
+    object-fit: scale-down;
+
+}
+
+
+
+
+
+
 
 
 
@@ -375,7 +462,7 @@ footer {
 }
 /* inner html layout */
 .result-item-title{
-    font-size: 1.5rem 
+    font-size: 1.5rem; 
     
  }
  .author-italic {
@@ -546,6 +633,7 @@ object-fit: scale-down;
         
     }
 }
+
 
 
 /* small screen */
