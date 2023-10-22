@@ -8,35 +8,35 @@ const carouselData = [
     },
     {
         genre: "Adult Nonfiction",
-        image: "images/adult-fiction.jpeg",
+        image: "images/adult-nonfiction.jpeg",
         search: "hardcover-nonfiction",
         id: "carousel-nonfiction",
         href: "bestsellers.html?category=hardcover-nonfiction"
     },
     {
         genre: "Young Adult Fiction",
-        image: "images/adult-fiction.jpeg",
+        image: "images/young-adult.jpeg",
         search: "young-adult-hardcover",
         id: "carousel-young",
         href: "bestsellers.html?category=young-adult-hardcover"
     },
     {
         genre: "Children's Fiction (8-12)",
-        image: "images/adult-fiction.jpeg",
+        image: "images/children8-12.jpeg",
         search: "childrens-middle-grade-hardcover",
         id: "carousel-children",
         href: "bestsellers.html?category=childrens-middle-grade-hardcover"
     },
     {
         genre: "Picture Books",
-        image: "images/adult-fiction.jpeg",
+        image: "images/picture.jpeg",
         search: "picture-books",
         id: "carousel-picture",
         href: "bestsellers.html?category=picture-books"
     },
     {
         genre: "Graphic Books and Manga",
-        image: "images/adult-fiction.jpeg",
+        image: "images/graphic.jpeg",
         search: "graphic-books-and-manga",
         id: "carousel-graphic",
         href: "bestsellers.html?category=graphic-books-and-manga"
