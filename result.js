@@ -215,22 +215,44 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
         
     }
 
-    async function fetchDescription(key) {
-         fetch(`https://openlibrary.org${key}.json`)
-        .then((response) => {
-            if (!response.ok) throw new Error(response.status);
-            return response.json; 
-        })
-        .then((responseJson) => {
-         console.log(responseJson, "in the function"); 
-        return responseJson.description; 
+    // async function fetchDescription(key) {
+    //      fetch(`https://openlibrary.org${key}.json`)
+    //     .then((response) => {
+    //         if (!response.ok) throw new Error(response.status);
+    //         return response.json; 
+    //     })
+    //     .then((responseJson) => {
+    //      console.log(responseJson, "in the function"); 
+    //     return responseJson.description.cover; 
        
-    })
-        .catch(error =>{ 
-            console.error(error, "error in description function");
-            return "Description not available"; })
+    // })
+    //     .catch(error =>{ 
+    //         console.error(error, "error in description function");
+    //         return "Description not available"; })
  
+    //     }
+
+
+
+    // below are answer of chat gpt 
+
+    async function fetchDescription(key) {
+        try {
+            const response = await fetch(`https://openlibrary.org${key}.json`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const responseJson = await response.json();
+            console.log(responseJson, "in the function");
+            const text =  responseJson.description.value;
+
+         
+            return text.replace(/\(\[source\]\[\d+\]\)\nPreceded by: \[.*?\]\[\d+\]\nFollowed by: \[.*?\]\[\d+\]\n\n-+/, '');
+        } catch (error) {
+            console.error(error, "error in description function");
+            return "Description not available";
         }
+    }
 
     
 
