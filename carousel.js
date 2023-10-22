@@ -101,16 +101,19 @@ const prevButton = document.querySelector(".carousel_button--left");
 
 //sizing
 const containerSize = container.getBoundingClientRect();
-const slideSize = slides[0].getBoundingClientRect();
-const slideWidth = `${containerSize.width * 0.55}px`;
-
 console.log(containerSize)
+const slideSize = slides[0].getBoundingClientRect();
+const slideWidth = `${containerSize.width * 0.3}px`;
+
+// console.log(containerSize)
 
 
 //setting the height of the container
-const containerHeight = `${slideSize.height + 150}px`
+const containerHeight = `${slideSize.height + 200}px`;
+// console.log(containerHeight)
 container.style.height = containerHeight;
 const slideHeight = `${containerHeight * 0.9}px`;
+
 // setting the width/height of the slides
 slides.forEach(slide=>{
     slide.style.width = slideWidth;
@@ -119,8 +122,8 @@ slides.forEach(slide=>{
 
 //setting the position of slides
 for (let i=0; i<slides.length; i++){
-    slides[i].style.left = `${(containerSize.width - 50) *i}px` ;
-   
+    slides[i].style.left = `${(containerSize.width -150) *i}px` ;
+    // slides[i].style.left = slideWidth * i
 }
 
 function moveToSlide(track, currentSlide, targetSlide){
@@ -132,8 +135,11 @@ function moveToSlide(track, currentSlide, targetSlide){
 //next button
 function moveNext(){
     let currentSlide = track.querySelector(".current-slide");
-    let nextSlide = currentSlide.nextElementSibling;
-    moveToSlide(track, currentSlide, nextSlide);
+    if(currentSlide.nextElementSibling){
+        let nextSlide = currentSlide.nextElementSibling;
+        moveToSlide(track, currentSlide, nextSlide);
+    }
+    
 }
 
 nextButton.addEventListener("click", moveNext);
@@ -142,7 +148,9 @@ nextButton.addEventListener("click", moveNext);
 //Prev button
 function movePrev(){
     let currentSlide = track.querySelector(".current-slide");
+    if(currentSlide.previousElementSibling){
     let prevSlide = currentSlide.previousElementSibling;
     moveToSlide(track, currentSlide, prevSlide);
+    }
 }
 prevButton.addEventListener("click", movePrev)

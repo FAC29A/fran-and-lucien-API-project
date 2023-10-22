@@ -67,24 +67,29 @@
         /* height:500px;  */
         width: 80%;
         margin: 0 auto;
-        /* background: lightcoral; */
+        background: lightcoral;
         
     }
 
     /* need to change these */
     .carousel_img {
-        width: 70%;
-        height: auto;
-        object-fit: cover;
+        
+        height: 100%
+        
+        
     }
-
+    .carousel-img-container{
+        height: 75%;
+    }
     .genre_carousel{
-        /* background: lightcoral; */
+        /* background: lightcoral;  */
         height: 100%;
         position: relative;
         overflow-x: clip;
+        border:1px solid black;
         
     }
+
 
     .carousel_track {
         padding:0;
@@ -101,8 +106,8 @@
         /* bottom: 0; */
         /* background-color: aliceblue; */
         /* width: 100%; */
-        height:auto; 
-        padding: 2rem;
+        height:70%; 
+        padding: 1rem;
 	    border-radius: 12px;
         transition: all ease-in-out 800ms;
         border: 1px solid black;
