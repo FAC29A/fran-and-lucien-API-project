@@ -252,7 +252,7 @@ indexTop5Rendering()
 function indexTop5Rendering() {
 const top5Content = document.getElementById("top5-content"); 
 
-fetch("https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-nonfiction.json?api-key=mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx")
+fetch("https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-fiction.json?api-key=mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx")
     .then((response) => {
       if (!response.ok) {
        
