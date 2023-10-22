@@ -7,11 +7,11 @@ const apiKey = "mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx"
 //The categories of books
 const categories = [
   {
-    category: "Hardcover Fiction",
+    category: "Fiction",
     search: "hardcover-fiction"
   },
   {
-    category: "Hardcover Non-Fiction",
+    category: "Nonfiction",
     search: "hardcover-nonfiction"
   },
   // {
