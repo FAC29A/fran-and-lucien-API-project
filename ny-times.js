@@ -1,5 +1,5 @@
 // My api key for NY times books
-const apiKey = "61ppkdu3vYf9JrgMIljm72BZDuCAt8vO" 
+const apiKey = "mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx" 
 // Frans latest api = 'mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx';
 // old API = "AzUyLIxzSLLZygRO896Q1msZZGAgH6V5";
 // lucien api = "61ppkdu3vYf9JrgMIljm72BZDuCAt8vO" 
@@ -77,6 +77,8 @@ function createBestsellersLink(category) {
 }
 
 
+
+
 // Function to fetch and display the book list for the selected category
 function fetchBooksForCategory(category) {
     fetch(`https://api.nytimes.com/svc/books/v3/lists/current/${category}.json?api-key=${apiKey}`)
@@ -122,7 +124,21 @@ for (let i = 0; i < 10; i++) {
 
     const bookDiv = document.createElement('div');
     // ------Lucien create classname
-    bookDiv.className = "result-text-dv"
+    bookDiv.className = "title-author-div"; 
+
+    // ----Lucien create a div for description  and amazon link 
+    const descriptionAndAmazonDiv = document.createElement('div'); 
+    descriptionAndAmazonDiv.className = "result-text-dv"; 
+
+    //-----Lucien : this is the container div that has 3 elements in it (image, text, title/author)
+    const searchResult = document.createElement('div'); 
+    searchResult.className = "search-result"; 
+
+    // ------lucien: this is container for topline purpose and it wrap around the div that contain 3 elements image, text, title/author)
+    const resultTopLine = document.createElement('div'); 
+    resultTopLine.className = "result-top-line"
+
+
 
     // bookDiv.className = "search-result";
     const bookTitle = top5Books[i].title.split(' ').map(x => x[0] + x.slice(1).toLowerCase()).join(' ');
@@ -130,6 +146,8 @@ for (let i = 0; i < 10; i++) {
    
     //create a book image div with the image:
     const bookImageDiv = document.createElement('div');
+    bookImageDiv.className = "cover-div"; 
+
     const bookImage = document.createElement('img');
     bookImage.src = top5Books[i].book_image;
     // -------------Lucien change belowline
@@ -141,11 +159,17 @@ for (let i = 0; i < 10; i++) {
         ${i + 1}.
         
     
-        <p>Title: ${bookTitle}</p>
-        <p>Author: ${top5Books[i].author}</p>
-        // ------lucien move description to another div
-        <p>Description: ${top5Books[i].description}</p>
+        <p class="result-item-title">${bookTitle}</p>
+        <p class="author-italic">${top5Books[i].author}</p>
+       
     `;
+
+  //  --------Lucien add inner html to the new created div of description and amazon link 
+    descriptionAndAmazonDiv.innerHTML = `
+
+    <p>Description: ${top5Books[i].description}</p>
+
+    `
 
 
 
@@ -155,8 +179,37 @@ for (let i = 0; i < 10; i++) {
     amazonLink.href = top5Books[i].amazon_product_url;
     amazonLink.textContent = 'Buy it on Amazon';
 
-    bookDiv.appendChild(amazonLink);
-    results.append(bookImageDiv, bookDiv);
+
+    // -----lucien change to append to description and amazon link div 
+    // bookDiv.appendChild(amazonLink);
+
+    // level 0  remember to figure this out in the last step 
+    // results.append(bookImageDiv, bookDiv);
+    // new added 
+
+    // level 3:  amazon link append to description and amazonLinkDiv 
+    descriptionAndAmazonDiv.appendChild(amazonLink); 
+
+     //level 2:  title/author div append to a medium div that contain  3 elements ( text, title, image) 
+     searchResult.appendChild(bookDiv); 
+
+    // level 2: description and amazon link append to a medium div that contain  3 elements ( text, title, image) 
+      searchResult.appendChild(descriptionAndAmazonDiv); 
+
+
+    //level 2:  image div append to a medium div that contain  3 elements ( text, title, image) 
+    searchResult.appendChild(bookImageDiv); 
+
+
+    // level 1: medium div that contain  3 elements ( text, title, image)  append to the div for topline purpose
+    resultTopLine.appendChild(searchResult)
+
+    // level 0: append the topline purpose div to result div (this result div is from getElementById)
+    results.appendChild(resultTopLine)
+
+
+
+
 }
 
         })
@@ -167,6 +220,10 @@ for (let i = 0; i < 10; i++) {
 
 
 }
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
 // Retrieve the category from the query parameter (e.g. "?category=hardcover-fiction")
 const urlParams = new URLSearchParams(window.location.search);
@@ -183,8 +240,80 @@ fetchBooksForCategory(category);
 categories.forEach(category => {
   createBestsellersLink(category);
 });
+// Lucien trial
+indexTop5Rendering()
+// end of Lucien trial 
 
 });
+
+
+// lucien trial for fetch info oon the index page 
+
+function indexTop5Rendering() {
+const top5Content = document.getElementById("top5-content"); 
+
+fetch("https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-nonfiction.json?api-key=mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx")
+    .then((response) => {
+      if (!response.ok) {
+       
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
+      
+      } else {
+        return response.json();
+      }
+        })
+        .then(data => {
+            console.log(data);
+            const indexPageTop5 = data.results.books; 
+
+            for (let j = 0; j <3; j++) {
+
+              const indexBookRankDiv = document.createElement('div');
+              indexBookRankDiv.className = "index-book-rank-div"; 
+
+              indexBookRankDiv.innerHTML = `
+              <p class="index-rank">No.${indexPageTop5[j].rank}</p>
+              `
+
+              const indexTitleAuthorDiv = document.createElement('div');
+              indexTitleAuthorDiv.className = "index-title-author-div"; 
+              indexTitleAuthorDiv.innerHTML = `
+              <p class="index-top-5-title">${indexPageTop5[j].title}</p>
+              <p class="index-top-5-author">by ${indexPageTop5[j].author}</p>
+              `
+
+              const indexCoverImageDiv = document.createElement('div'); 
+              indexCoverImageDiv.className = "index-cover-image-div"
+              indexCoverImageDiv.innerHTML = `
+              <img class="index-cover-image" alt="cover for ${indexPageTop5[j].title}" src= " ${indexPageTop5[j].book_image}"">
+              `
+
+              const indexBestsellerItemDiv = document.createElement('div')
+              indexBestsellerItemDiv.className = "index-bestseller-item-div"
+
+              // level 3: each bestseller item append 3 children element ( rank, title/author, cover)
+              indexBestsellerItemDiv.appendChild(indexBookRankDiv); 
+              indexBestsellerItemDiv.appendChild(indexTitleAuthorDiv); 
+              indexBestsellerItemDiv.appendChild(indexCoverImageDiv); 
+
+              // level 2: each bestseller item (in top 5 list there are 5 items) then be appended to a parent div 
+              top5Content.appendChild(indexBestsellerItemDiv); 
+
+
+              }
+          
+          
+          }
+               
+        )
+
+
+
+}
+
+
+
+// end of Lucien trial 
 
 
 // Old Code

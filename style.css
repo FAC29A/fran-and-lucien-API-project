@@ -3,9 +3,14 @@
     --backgound-light: rgb(242, 241, 230); 
     --footer-dark: rgb(50, 47, 47);
     --blackest: #000000; 
-    --dark-grey:#191919; 
-    --light-grey:#D9D9D9; 
-    --whitest: #FFFFFF; 
+    --dark-grey:#696463; 
+    --mid-grey: #696463; 
+    --light-grey:#C1BEBD; 
+    --lightest-grey: #ECE2E2; 
+    --whitest: #FCF4F4; 
+
+
+
     /* fontsize for large screen */
     --font-size-125: 1.25rem;  
     --font-size-200: 2rem; 
@@ -30,11 +35,15 @@
     --line-s: 1px; 
     --line-m: 1.5px; 
     --line-l: 2px; 
+    --line-xl:2.5px; 
  
 
 
 
     /* font-family */
+    --font-source: 'Source Serif 4', serif; 
+    --font-dm: 'DM Serif Display', serif;
+    --font-elsie: 'Elsie Swash Caps', serif;
   
 
 
@@ -74,7 +83,8 @@ body {
     background-repeat: none;
     height: 100vh;
     max-width: 100vw;
-    font-family: 'DM Serif Display', serif;
+    padding-top: 2rem; 
+    /* font-family: 'DM Serif Display', serif; */
 }
 
 /* --------------------------------- Index page ------------------------------------------*/
@@ -83,17 +93,16 @@ body {
 /* header is for log container */
 header { 
  
-   height: 5.5rem; 
-   padding-left: var(--spacing-h-margin-200); 
+   height: 7rem; 
+   
    display: flex; 
    align-items: center;
-   border-bottom: var(--line-m) solid var(--blackest); 
-   
+   border-bottom: var(--line-xl) solid var(--blackest); 
 }
 
 #search-section-container {
     
-    height: 18rem; 
+    height: 20rem; 
     display: flex; 
     align-items: center;
     justify-content: center;
@@ -101,9 +110,11 @@ header {
 }
 
 #search-instruction {
-    font-size: 1.8rem ; 
+    font-size: 1.6rem ; 
+    font-weight: 900; 
+    color: var(--blackest); 
     display: block; 
-    font-family: "DM serif dispaly"; 
+    font-family: var(--font-dm); 
     font-weight: 500; 
     padding-bottom: 2rem; 
     text-align: center; 
@@ -121,13 +132,13 @@ header {
 /* 
 the container for search input and button */
 #search-bar {
-    width: 100%; 
+    width: 80vh; 
     max-width: 600px;
-    background-color: var(--light-grey); 
+    background-color: var(--lightest-grey); 
     display: flex; 
     justify-content: center;
     padding-left: 1rem; 
-    border: var(--line-m) solid black
+    border: var(--line-l) solid var(--blackest)
     
 }
 #search-bar input {
@@ -136,12 +147,15 @@ the container for search input and button */
     border: 0; 
     outline: none; 
     font-size: var(--font-size-150); 
-    color: var(--blackest); 
+    color: var(--footer-dark); 
 
 }
 
 ::placeholder{
-    color: var(--dark-grey)
+    color: var(--mid-grey); 
+    font-family: var(--font-source); 
+    font-weight: 00; 
+    font-style: italic; 
 }
 
 #search-bar button img{
@@ -173,13 +187,15 @@ main {
    
     grid-column: 2;
     grid-row: 1;
-    border-left: 2px solid black;
+    border-left: var(--line-m) solid var(--blackest);
+    padding-bottom: 5rem ; 
    
  }
 
 #top5-section\ {
     grid-column: 1;
     grid-row: 1;
+  
 
  }
 
@@ -189,26 +205,126 @@ main {
 /* genre section  */
 /* title banner container  */
 
-
 .section-banner {
-    height: auto; 
+    
     width: 100%; 
-    outline: 1.5px solid black; 
-    margin: 0; 
-    padding: 0; 
+    outline: var(--line-m) solid var(--blackest); 
+    display: flex; 
+    gap: 0.2rem 
+
 }
 
 .padding-for-banner-text {
     background-color: var(--blackest);
     width: fit-content; 
     padding-left: 2rem; 
-    padding-right: 4rem;  
-    line-height: 1; 
+    padding-right: 1.5rem ;  
+    overflow: hidden;
+
 }
 
 .padding-for-banner-text h2{
-    color: var(--backgound-light)
+    color: var(--backgound-light); 
+    margin: 1rem; 
+   
 }
+
+.right-styling-block{ 
+   
+    width: 3rem; 
+    background-color: var(--blackest);
+    padding: 0; 
+    margin: 0; 
+}
+
+
+
+
+
+/* #####index page: bestseller top 5 section  */
+
+#top5-content {
+    display: grid; 
+    gap: 4rem; 
+    padding: 4rem; 
+}
+
+
+.index-bestseller-item-div {
+    border: var(--line-s) solid var(--blackest); 
+    display: grid; 
+    grid-template-columns: minmax(min-content,2fr) minmax(10rem,1fr); 
+    grid-template-rows: 1rem 15rem;
+    padding: 1.5rem; 
+    grid-column-gap: 3rem;  
+    border-radius: 15px;
+    
+}
+
+.index-book-rank-div{
+    grid-column: span 2;
+    grid-row: 1; 
+    background-color:  var(--lightest-grey); 
+    border: var(--line-s) solid var(--blackest); 
+    width: fit-content; 
+    overflow: hidden;
+    width: 5rem; 
+    height: 5rem; 
+    border-radius: 50%;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-top: -3rem; 
+    margin-left: -3rem; 
+
+}
+
+.index-rank {
+    font-size: var(--font-size-125); 
+    font-family: var(--font-dm);
+    color: var(--blackest); 
+    
+}
+
+.index-title-author-div{
+    grid-column: 1; 
+    grid-row: 2; 
+}
+
+.index-top-5-title {
+    font-size: var(--font-size-225); 
+    font-family: var(--font-dm);
+    color: var(--blackest); 
+    margin-bottom: 0;
+}
+
+.index-top-5-author {
+    font-size: var(--font-size-100); 
+    font-family: var(--font-source);
+    color: var(--blackest); 
+    font-style: italic; 
+    font-weight: 300; 
+}
+
+
+.index-cover-image-div {
+    grid-column: 2; 
+    grid-row: 2; 
+    align-self: center;
+    justify-self: center;
+}
+
+.index-cover-image{
+    height: 14rem; 
+    width: 100%; 
+    object-fit: scale-down;
+
+}
+
+
+
+
+
 
 
 
@@ -222,11 +338,16 @@ main {
 /* h1 is for logo  */
 h1 {
     font-family: 'Elsie Swash Caps', serif;
-    font-size: 2.5rem;
+    font-size: 3.8rem;
 
 }
 h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+
+}
+
+h3 {
+    font-size: 1.5rem; 
 }
 
 /* hr {
@@ -259,8 +380,6 @@ footer {
 }
 
 #footer-first-line {
-  
-
     border-top: 2px solid var(--backgound-light); 
     height: 2rem; 
     grid-row: 3; 
@@ -268,7 +387,6 @@ footer {
 }
 
 #footer-second-line {
-    
     grid-row: 8; 
     padding-left: 2rem;
     border-top: 1.5px solid var(--backgound-light); 
@@ -283,26 +401,58 @@ footer {
 /* ----------------------------- search results page ----------------------------------------*/
 /* result text banner */
 
+
+
+
 .result-top-line {
     border-top: 2px solid var(--blackest); 
     width: 100vw; 
 }
 
 /* big container to fix all the results  */
-#result-div{
+#result-div #category-top-5 {
     display: grid; 
     gap: 2rem;
-   
+
     
 }
 
+.result-banner {
+    background-color: var(--blackest);
+}
+
+
+.result-banner-mid-div {
+    border: var(--line-s) solid var(--blackest); 
+    margin-top: 2rem ;
+    margin-bottom: 4rem; 
+    width: fit-content; 
+    background-color: var(--whitest);  
+}
+.result-banner-text, #category-title{
+    font-size: 1.8rem;  
+    padding-left: 2rem; 
+    padding-right: 5rem;
+    margin: 1rem; 
+    background-color: var(--whitest); 
+ }
+
+/* 'harry potter' in 'results for 'harry potter' */
+#query-name{
+    font-family: var(--font-source); 
+    font-style: italic; 
+    font-weight:300
+}
 /* layout inside of each research item, inside research result there are 3 children(title/author, text, image )  */
 .search-result {
+
     display: grid; 
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: 1fr 3fr; 
-    max-width: 1000px; 
-    padding-left: 2rem; 
+    grid-template-columns: minmax(min-content, 80ch) minmax(10rem, 1fr); 
+    grid-template-rows: 6rem minmax(min-content, auto); 
+   
+    padding: 2rem; 
+
+    column-gap:3rem; 
    
     
     /* background-image: url('./images/book-green.png'); */
@@ -321,7 +471,7 @@ footer {
 }
 /* inner html layout */
 .result-item-title{
-    font-size: 1.5rem 
+    font-size: 1.5rem; 
     
  }
  .author-italic {
@@ -331,11 +481,33 @@ footer {
  /* text div (excluding titile and author), to manipulate the space between category and description   */
  .result-text-dv {
     /* background-color: green; */
-    display: grid; 
+    display: flex;
+    flex-direction: column;
+    align-items: space-between; 
     padding-top: 1rem; 
     font-size: 1rem; 
     
  }
+
+/* description in result page   */
+ .result-text-dv > p {
+    font-family: var(--font-dm); 
+    line-height: 1.5;
+ }
+
+ /* buy it on amazon  */
+ .result-text-dv > a {
+    padding: 0.7rem;
+  width: fit-content;
+  border: var(--line-s) solid var(--blackest);
+  font-family: var(--font-dm); 
+  size: var(--font-size-150)
+
+}
+
+.result-text-dv > a:hover {
+    background-color: var(--lightest-grey);
+}
 
 
 
@@ -353,13 +525,22 @@ footer {
 }
 
 
+/* 
+------image size control  */
+.cover-image{
+    height: 14rem; 
+    width: 100%; 
+    object-fit: scale-down;
+}
+
+
 
 /* Setup the width and height of image  */
 /* container of cover image  */
-/* .cover-div { */
-    /* justify-self: center;
-    align-self: center;  */
-/* } */
+.cover-div { 
+    justify-self: left;
+    
+}
 
 /* image inside of cover div  */
 /* .cover-div img { */
@@ -367,6 +548,7 @@ footer {
     align-self: center;  */
     /* max-height: 180px;  */
 /* } */
+
 
 
 
@@ -472,8 +654,8 @@ footer {
         grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
     }
     .search-result {
-        width : 10.1rem;
-        height: 14.2rem;
+        /* width : 10.1rem; */
+       
         padding-top: 2.3rem;
         font-size: 0.95rem;
     }
@@ -483,6 +665,7 @@ footer {
         
     }
 }
+
 
 
 /* small screen */
