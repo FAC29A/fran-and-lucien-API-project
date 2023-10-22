@@ -418,17 +418,25 @@ footer {
     
 }
 
+.result-banner {
+    background-color: var(--blackest);
+}
+
 
 .result-banner-mid-div {
     border: var(--line-s) solid var(--blackest); 
     margin-top: 2rem ;
     margin-bottom: 4rem; 
     width: fit-content; 
+    background-color: var(--whitest);  
 }
-.result-banner-text {
+.result-banner-text, #category-title{
     font-size: 1.8rem;  
     padding-left: 2rem; 
-    margin: 1rem  }
+    padding-right: 5rem;
+    margin: 1rem; 
+    background-color: var(--whitest); 
+ }
 
 /* 'harry potter' in 'results for 'harry potter' */
 #query-name{
@@ -440,7 +448,7 @@ footer {
 .search-result {
 
     display: grid; 
-    grid-template-columns: minmax(min-content, 3fr) minmax(10rem, 1fr); 
+    grid-template-columns: minmax(min-content, 80ch) minmax(10rem, 1fr); 
     grid-template-rows: 6rem minmax(min-content, auto); 
    
     padding: 2rem; 
@@ -482,6 +490,26 @@ footer {
     
  }
 
+/* description in result page   */
+ .result-text-dv > p {
+    font-family: var(--font-dm); 
+    line-height: 1.5;
+ }
+
+ /* buy it on amazon  */
+ .result-text-dv > a {
+    padding: 0.7rem;
+  width: fit-content;
+  border: var(--line-s) solid var(--blackest);
+  font-family: var(--font-dm); 
+  size: var(--font-size-150)
+
+}
+
+.result-text-dv > a:hover {
+    background-color: var(--lightest-grey);
+}
+
 
 
 
@@ -510,10 +538,10 @@ footer {
 
 /* Setup the width and height of image  */
 /* container of cover image  */
-/* .cover-div { */
-    /* justify-self: center;
-    align-self: center;  */
-/* } */
+.cover-div { 
+    justify-self: left;
+    
+}
 
 /* image inside of cover div  */
 /* .cover-div img { */
