@@ -1,5 +1,5 @@
 // My api key for NY times books
-const apiKey = "61ppkdu3vYf9JrgMIljm72BZDuCAt8vO" 
+const apiKey = "mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx" 
 // Frans latest api = 'mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx';
 // old API = "AzUyLIxzSLLZygRO896Q1msZZGAgH6V5";
 // lucien api = "61ppkdu3vYf9JrgMIljm72BZDuCAt8vO" 

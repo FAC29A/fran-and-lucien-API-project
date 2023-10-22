@@ -256,7 +256,7 @@ main {
     display: grid; 
     grid-template-columns: minmax(min-content,2fr) minmax(10rem,1fr); 
     grid-template-rows: 1rem 15rem;
-    padding: 2rem; 
+    padding: 1.5rem; 
     grid-column-gap: 3rem;  
     border-radius: 15px;
     
@@ -281,7 +281,7 @@ main {
 }
 
 .index-rank {
-    font-size: var(--font-size-150); 
+    font-size: var(--font-size-125); 
     font-family: var(--font-dm);
     color: var(--blackest); 
     
@@ -423,7 +423,6 @@ footer {
     border: var(--line-s) solid var(--blackest); 
     margin-top: 2rem ;
     margin-bottom: 4rem; 
-
     width: fit-content; 
 }
 .result-banner-text {
@@ -439,11 +438,14 @@ footer {
 }
 /* layout inside of each research item, inside research result there are 3 children(title/author, text, image )  */
 .search-result {
+
     display: grid; 
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: 1fr 3fr; 
-    max-width: 1000px; 
-    padding-left: 2rem; 
+    grid-template-columns: minmax(min-content, 3fr) minmax(10rem, 1fr); 
+    grid-template-rows: 6rem minmax(min-content, auto); 
+   
+    padding: 2rem; 
+
+    column-gap:3rem; 
    
     
     /* background-image: url('./images/book-green.png'); */
@@ -472,7 +474,9 @@ footer {
  /* text div (excluding titile and author), to manipulate the space between category and description   */
  .result-text-dv {
     /* background-color: green; */
-    display: grid; 
+    display: flex;
+    flex-direction: column;
+    align-items: space-between; 
     padding-top: 1rem; 
     font-size: 1rem; 
     
@@ -497,9 +501,9 @@ footer {
 /* 
 ------image size control  */
 .cover-image{
-width: 80%;
-height: auto; 
-object-fit: scale-down;
+    height: 14rem; 
+    width: 100%; 
+    object-fit: scale-down;
 }
 
 
@@ -517,6 +521,7 @@ object-fit: scale-down;
     align-self: center;  */
     /* max-height: 180px;  */
 /* } */
+
 
 
 
@@ -622,8 +627,8 @@ object-fit: scale-down;
         grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
     }
     .search-result {
-        width : 10.1rem;
-        height: 14.2rem;
+        /* width : 10.1rem; */
+       
         padding-top: 2.3rem;
         font-size: 0.95rem;
     }
