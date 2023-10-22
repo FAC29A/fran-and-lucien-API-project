@@ -1,5 +1,5 @@
 // My api key for NY times books
-const apiKey = "61ppkdu3vYf9JrgMIljm72BZDuCAt8vO" 
+const apiKey = "mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx" 
 // Frans latest api = 'mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx';
 // old API = "AzUyLIxzSLLZygRO896Q1msZZGAgH6V5";
 // lucien api = "61ppkdu3vYf9JrgMIljm72BZDuCAt8vO" 
@@ -75,6 +75,8 @@ function createBestsellersLink(category) {
 
     bestsellersList.appendChild(categoryLink);
 }
+
+
 
 
 // Function to fetch and display the book list for the selected category
@@ -208,15 +210,6 @@ for (let i = 0; i < 10; i++) {
 
 
 
-
-    
-
-
-
-
-
-
-
 }
 
         })
@@ -227,6 +220,10 @@ for (let i = 0; i < 10; i++) {
 
 
 }
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
 // Retrieve the category from the query parameter (e.g. "?category=hardcover-fiction")
 const urlParams = new URLSearchParams(window.location.search);
@@ -243,8 +240,80 @@ fetchBooksForCategory(category);
 categories.forEach(category => {
   createBestsellersLink(category);
 });
+// Lucien trial
+indexTop5Rendering()
+// end of Lucien trial 
 
 });
+
+
+// lucien trial for fetch info oon the index page 
+
+function indexTop5Rendering() {
+const top5Content = document.getElementById("top5-content"); 
+
+fetch("https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-nonfiction.json?api-key=mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx")
+    .then((response) => {
+      if (!response.ok) {
+       
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
+      
+      } else {
+        return response.json();
+      }
+        })
+        .then(data => {
+            console.log(data);
+            const indexPageTop5 = data.results.books; 
+
+            for (let j = 0; j <3; j++) {
+
+              const indexBookRankDiv = document.createElement('div');
+              indexBookRankDiv.className = "index-book-rank-div"; 
+
+              indexBookRankDiv.innerHTML = `
+              <p class="index-rank">No.${indexPageTop5[j].rank}</p>
+              `
+
+              const indexTitleAuthorDiv = document.createElement('div');
+              indexTitleAuthorDiv.className = "index-title-author-div"; 
+              indexTitleAuthorDiv.innerHTML = `
+              <p class="index-top-5-title">${indexPageTop5[j].title}</p>
+              <p class="index-top-5-author">by ${indexPageTop5[j].author}</p>
+              `
+
+              const indexCoverImageDiv = document.createElement('div'); 
+              indexCoverImageDiv.className = "index-cover-image-div"
+              indexCoverImageDiv.innerHTML = `
+              <img class="index-cover-image" alt="cover for ${indexPageTop5[j].title}" src= " ${indexPageTop5[j].book_image}"">
+              `
+
+              const indexBestsellerItemDiv = document.createElement('div')
+              indexBestsellerItemDiv.className = "index-bestseller-item-div"
+
+              // level 3: each bestseller item append 3 children element ( rank, title/author, cover)
+              indexBestsellerItemDiv.appendChild(indexBookRankDiv); 
+              indexBestsellerItemDiv.appendChild(indexTitleAuthorDiv); 
+              indexBestsellerItemDiv.appendChild(indexCoverImageDiv); 
+
+              // level 2: each bestseller item (in top 5 list there are 5 items) then be appended to a parent div 
+              top5Content.appendChild(indexBestsellerItemDiv); 
+
+
+              }
+          
+          
+          }
+               
+        )
+
+
+
+}
+
+
+
+// end of Lucien trial 
 
 
 // Old Code
