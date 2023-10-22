@@ -1,11 +1,18 @@
+
+
 :root {
     /* colour variable */
     --backgound-light: rgb(242, 241, 230); 
     --footer-dark: rgb(50, 47, 47);
     --blackest: #000000; 
-    --dark-grey:#191919; 
-    --light-grey:#D9D9D9; 
-    --whitest: #FFFFFF; 
+    --dark-grey:#696463; 
+    --mid-grey: #696463; 
+    --light-grey:#C1BEBD; 
+    --lightest-grey: #ECE2E2; 
+    --whitest: #FCF4F4; 
+
+
+
     /* fontsize for large screen */
     --font-size-125: 1.25rem;  
     --font-size-200: 2rem; 
@@ -35,6 +42,9 @@
 
 
     /* font-family */
+    --font-source: 'Source Serif 4', serif; 
+    --font-dm: 'DM Serif Display', serif;
+    --font-elsie: 'Elsie Swash Caps', serif;
   
 
 
@@ -74,7 +84,7 @@ body {
     background-repeat: none;
     height: 100vh;
     max-width: 100vw;
-    font-family: 'DM Serif Display', serif;
+    /* font-family: 'DM Serif Display', serif; */
 }
 
 /* --------------------------------- Index page ------------------------------------------*/
@@ -84,16 +94,17 @@ body {
 header { 
  
    height: 5.5rem; 
+   padding-top:3.8rem; 
    padding-left: var(--spacing-h-margin-200); 
    display: flex; 
    align-items: center;
-   border-bottom: var(--line-m) solid var(--blackest); 
+   border-bottom: var(--line-m) solid var(--mid-grey); 
    
 }
 
 #search-section-container {
     
-    height: 18rem; 
+    height: 20rem; 
     display: flex; 
     align-items: center;
     justify-content: center;
@@ -101,9 +112,11 @@ header {
 }
 
 #search-instruction {
-    font-size: 1.8rem ; 
+    font-size: 1.6rem ; 
+    font-weight: 900; 
+    color: var(--blackest); 
     display: block; 
-    font-family: "DM serif dispaly"; 
+    font-family: var(--font-dm); 
     font-weight: 500; 
     padding-bottom: 2rem; 
     text-align: center; 
@@ -121,13 +134,13 @@ header {
 /* 
 the container for search input and button */
 #search-bar {
-    width: 100%; 
+    width: 80vh; 
     max-width: 600px;
     background-color: var(--light-grey); 
     display: flex; 
     justify-content: center;
     padding-left: 1rem; 
-    border: var(--line-m) solid black
+    border: var(--line-l) solid var(--blackest)
     
 }
 #search-bar input {
@@ -136,12 +149,15 @@ the container for search input and button */
     border: 0; 
     outline: none; 
     font-size: var(--font-size-150); 
-    color: var(--blackest); 
+    color: var(--footer-dark); 
 
 }
 
 ::placeholder{
-    color: var(--dark-grey)
+    color: var(--mid-grey); 
+    font-family: var(--font-source); 
+    font-weight: 00; 
+    font-style: italic; 
 }
 
 #search-bar button img{
@@ -173,7 +189,8 @@ main {
    
     grid-column: 2;
     grid-row: 1;
-    border-left: 2px solid black;
+    border-left: var(--line-m) solid var(--blackest);
+    padding-bottom: 5rem ; 
    
  }
 
@@ -189,27 +206,42 @@ main {
 /* genre section  */
 /* title banner container  */
 
-
 .section-banner {
-    height: auto; 
+    
     width: 100%; 
-    outline: 1.5px solid black; 
-    margin: 0; 
-    padding: 0; 
+    outline: var(--line-m) solid var(--blackest); 
+    display: flex; 
+    gap: 0.3rem 
+
 }
 
 .padding-for-banner-text {
     background-color: var(--blackest);
     width: fit-content; 
     padding-left: 2rem; 
-    padding-right: 4rem;  
-    line-height: 1; 
+    padding-right: 1.5rem ;  
+    overflow: hidden;
+      
+    
 }
 
 .padding-for-banner-text h2{
-    color: var(--backgound-light)
+    color: var(--backgound-light); 
+    margin-bottom: 0; 
+    line-height:0.65; 
 }
 
+.right-styling-block{ 
+   
+    width: 3rem; 
+    background-color: var(--blackest);
+    padding: 0; 
+    margin: 0; 
+    
+    
+  
+
+}
 
 
 
@@ -222,11 +254,16 @@ main {
 /* h1 is for logo  */
 h1 {
     font-family: 'Elsie Swash Caps', serif;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
 
 }
 h2 {
-    font-size: 2rem;
+    font-size: 2.4rem;
+
+}
+
+h3 {
+    font-size: 1.5rem; 
 }
 
 /* hr {
