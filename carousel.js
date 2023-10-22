@@ -45,21 +45,30 @@ const carouselData = [
 ]
 
 function carouselLinks(category) {
-    //div to contain all links:
-    const genreCarousel = document.getElementById('genre-carousel')
+    //div to contain all links (this is a ul)
+    const genreCarousel = document.getElementById('carousel_track')
 
-      //create links element
+      //create list elements (each contains <a> with image and genre name)
+      const carouselListItem = document.createElement('li');
+      carouselListItem.className = 'carousel_slide';
+
       const carouselLink = document.createElement('a');
       carouselLink.id = category.id
       
     
       //create div containing the genre and image:
+      const genreImageContainer = document.createElement('div');
       const genreImage = document.createElement('img');
       genreImage.src = category.image;
+      genreImage.className = 'carousel_img';
+      genreImageContainer.className = 'carousel-img-container';
+      genreImageContainer.appendChild(genreImage);
       const genreTitle = document.createElement('h3');
       genreTitle.innerHTML = category.genre;
-      carouselLink.append(genreImage, genreTitle);
+      carouselLink.append(genreImageContainer, genreTitle);
 
+      //Append <a> element to <li> item
+      carouselListItem.appendChild(carouselLink)
   
       // Attach a click event to each category link
       carouselLink.addEventListener('click', (event) => {
@@ -68,7 +77,7 @@ function carouselLinks(category) {
           window.location.href = category.href;
       });
   
-      genreCarousel.appendChild(carouselLink); 
+      genreCarousel.appendChild(carouselListItem); 
   }
 
 
@@ -76,3 +85,64 @@ carouselData.forEach(category=>{
     carouselLinks(category)
 });
 
+
+//making the carousel move:
+const container = document.getElementById("genre_carousel_wrapper")
+const track = document.querySelector(".carousel_track");
+const slides = Array.from(track.children);
+slides[0].classList.add("current-slide");
+
+//navigation
+const nextButton = document.querySelector(".carousel_button--right");
+const prevButton = document.querySelector(".carousel_button--left");
+// const dotNav = document.querySelector(".carousel_nav");
+// console.log(dotNav)
+// const dots = Array.from(dotNav.children);
+
+//sizing
+const containerSize = container.getBoundingClientRect();
+const slideSize = slides[0].getBoundingClientRect();
+const slideWidth = `${containerSize.width * 0.55}px`;
+
+console.log(containerSize)
+
+
+//setting the height of the container
+const containerHeight = `${slideSize.height + 150}px`
+container.style.height = containerHeight;
+const slideHeight = `${containerHeight * 0.9}px`;
+// setting the width/height of the slides
+slides.forEach(slide=>{
+    slide.style.width = slideWidth;
+    slide.style.height = slideHeight;
+})
+
+//setting the position of slides
+for (let i=0; i<slides.length; i++){
+    slides[i].style.left = `${(containerSize.width - 50) *i}px` ;
+   
+}
+
+function moveToSlide(track, currentSlide, targetSlide){
+    track.style.transform = 'translateX(-' + targetSlide.style.left+ ')';
+    currentSlide.classList.remove('current-slide');
+    targetSlide.classList.add('current-slide');
+}
+
+//next button
+function moveNext(){
+    let currentSlide = track.querySelector(".current-slide");
+    let nextSlide = currentSlide.nextElementSibling;
+    moveToSlide(track, currentSlide, nextSlide);
+}
+
+nextButton.addEventListener("click", moveNext);
+
+
+//Prev button
+function movePrev(){
+    let currentSlide = track.querySelector(".current-slide");
+    let prevSlide = currentSlide.previousElementSibling;
+    moveToSlide(track, currentSlide, prevSlide);
+}
+prevButton.addEventListener("click", movePrev)
