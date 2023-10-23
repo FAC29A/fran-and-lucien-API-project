@@ -1,3 +1,7 @@
+//import { fetchBooksForCategory } from './ny-times.js';
+
+//import { categories } from './ny-times.js';
+
 const carouselData = [
     {
         genre: "Adult Fiction",
@@ -54,6 +58,7 @@ function carouselLinks(category) {
 
       const carouselLink = document.createElement('a');
       carouselLink.id = category.id
+      carouselLink.href = category.href;
       
     
       //create div containing the genre and image:
@@ -65,13 +70,14 @@ function carouselLinks(category) {
       genreImageContainer.appendChild(genreImage);
       const genreTitle = document.createElement('h3');
       genreTitle.innerHTML = category.genre;
+      genreTitle.classList.add("carousel-genre-title");
       carouselLink.append(genreImageContainer, genreTitle);
 
       //Append <a> element to <li> item
       carouselListItem.appendChild(carouselLink)
   
       // Attach a click event to each category link
-      carouselLink.addEventListener('click', (event) => {
+      carouselListItem.addEventListener('click', (event) => {
           event.preventDefault(); // Prevent the default link behavior
         //   const category = category.genre; // Get the category from the link's id
           window.location.href = category.href;
@@ -82,7 +88,8 @@ function carouselLinks(category) {
 
 
 carouselData.forEach(category=>{
-    carouselLinks(category)
+    carouselLinks(category);
+    
 });
 
 
@@ -103,16 +110,17 @@ const prevButton = document.querySelector(".carousel_button--left");
 const containerSize = container.getBoundingClientRect();
 console.log(containerSize)
 const slideSize = slides[0].getBoundingClientRect();
-const slideWidth = `${containerSize.width * 0.3}px`;
-
-// console.log(containerSize)
+const slideWidth = `${slideSize.width}px`;
+console.log(slideSize)
+console.log(containerSize)
 
 
 //setting the height of the container
 const containerHeight = `${slideSize.height + 200}px`;
 // console.log(containerHeight)
 container.style.height = containerHeight;
-const slideHeight = `${containerHeight * 0.9}px`;
+const slideHeight = `${slideSize.height * 6}px`;
+
 
 // setting the width/height of the slides
 slides.forEach(slide=>{
@@ -122,9 +130,26 @@ slides.forEach(slide=>{
 
 //setting the position of slides
 for (let i=0; i<slides.length; i++){
-    slides[i].style.left = `${(containerSize.width -150) *i}px` ;
+    slides[i].style.left = `${(containerSize.width -170) *i}px` ;
     // slides[i].style.left = slideWidth * i
 }
+
+
+//clone slides:
+const clonedSlides = slides.slice(0, 3).map(slide => slide.cloneNode(true));
+clonedSlides.forEach(slide => {
+  track.appendChild(slide);
+});
+
+// Update the number of slides and total width
+const updatedSlides = Array.from(track.children);
+const updatedSlideWidth = `${updatedSlides[0].getBoundingClientRect().width}px`;
+track.style.width = `${updatedSlideWidth * updatedSlides.length}px`;
+
+// Update the position of the slides
+updatedSlides.forEach((slide, index) => {
+  slide.style.left = `${updatedSlideWidth * index}px`;
+});
 
 function moveToSlide(track, currentSlide, targetSlide){
     track.style.transform = 'translateX(-' + targetSlide.style.left+ ')';
@@ -138,7 +163,11 @@ function moveNext(){
     if(currentSlide.nextElementSibling){
         let nextSlide = currentSlide.nextElementSibling;
         moveToSlide(track, currentSlide, nextSlide);
-    }
+    } else {
+        // If it's the last slide, jump back to the first slide
+        let firstSlide = updatedSlides[0];
+        moveToSlide(track, currentSlide, firstSlide);
+      }
     
 }
 

@@ -8,11 +8,13 @@ const apiKey = "mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx"
 const categories = [
   {
     category: "Fiction",
-    search: "hardcover-fiction"
+    search: "hardcover-fiction",
+    image: "images/adult-fiction.jpeg",
   },
   {
     category: "Nonfiction",
-    search: "hardcover-nonfiction"
+    search: "hardcover-nonfiction",
+    image: "images/adult-nonfiction.jpeg",
   },
   // {
   //   category: "Paperback Fiction",
@@ -24,19 +26,23 @@ const categories = [
   // },
   {
     category: "Young Adult",
-    search: "young-adult-hardcover"
+    search: "young-adult-hardcover",
+    image: "images/young-adult.jpeg",
   },
   {
     category: "Children's books, 8-12",
-    search: "childrens-middle-grade-hardcover"
+    search: "childrens-middle-grade-hardcover",
+    image: "images/children8-12.jpeg",
   },
   {
     category: "Children's Picture Books",
-    search: "picture-books"
+    search: "picture-books",
+    image: "images/picture.jpeg",
   },
   {
     category: "Graphic Books and Manga",
-    search: "graphic-books-and-manga"
+    search: "graphic-books-and-manga",
+    image: "images/graphic.jpeg",
   }
   
 ]
@@ -56,11 +62,20 @@ function createBestsellersLink(category) {
     // console.log(category.search)
 
     //create title for each link with category name
+    const categoryTitleContainer = document.createElement('div')
     const categoryTitle = document.createElement('h3');
     categoryTitle.innerHTML = category.category;
+    categoryTitleContainer.appendChild(categoryTitle)
 
-    //append each categoryTitle to each link
-    categoryLink.append(categoryTitle);
+    //image for each link
+    const categoryImageContainer = document.createElement('div');
+    const categoryImage = document.createElement('img');
+    categoryImage.src = category.image;
+    categoryImageContainer.className = "category-link-image"
+    categoryImageContainer.appendChild(categoryImage);
+
+    //append each categoryTitle & image to each link
+    categoryLink.append(categoryTitleContainer, categoryImageContainer);
 
     //give links class name for styling
     categoryLink.className = "category-links";
