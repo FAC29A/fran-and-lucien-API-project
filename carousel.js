@@ -128,6 +128,23 @@ for (let i=0; i<slides.length; i++){
     // slides[i].style.left = slideWidth * i
 }
 
+
+//clone slides:
+const clonedSlides = slides.slice(0, 3).map(slide => slide.cloneNode(true));
+clonedSlides.forEach(slide => {
+  track.appendChild(slide);
+});
+
+// Update the number of slides and total width
+const updatedSlides = Array.from(track.children);
+const updatedSlideWidth = `${updatedSlides[0].getBoundingClientRect().width}px`;
+track.style.width = `${updatedSlideWidth * updatedSlides.length}px`;
+
+// Update the position of the slides
+updatedSlides.forEach((slide, index) => {
+  slide.style.left = `${updatedSlideWidth * index}px`;
+});
+
 function moveToSlide(track, currentSlide, targetSlide){
     track.style.transform = 'translateX(-' + targetSlide.style.left+ ')';
     currentSlide.classList.remove('current-slide');
@@ -140,7 +157,11 @@ function moveNext(){
     if(currentSlide.nextElementSibling){
         let nextSlide = currentSlide.nextElementSibling;
         moveToSlide(track, currentSlide, nextSlide);
-    }
+    } else {
+        // If it's the last slide, jump back to the first slide
+        let firstSlide = updatedSlides[0];
+        moveToSlide(track, currentSlide, firstSlide);
+      }
     
 }
 
