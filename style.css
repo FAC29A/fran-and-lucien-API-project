@@ -489,8 +489,8 @@ footer {
     
  }
 
-/* description in result page   */
- .result-text-dv > p {
+/* description in genre and result page */
+ .result-text-dv > p, .rating-category-container > p, .result-description  {
     font-family: var(--font-dm); 
     line-height: 1.5;
  }
@@ -508,6 +508,9 @@ footer {
 .result-text-dv > a:hover {
     background-color: var(--lightest-grey);
 }
+
+
+
 
 
 
@@ -531,6 +534,11 @@ footer {
     height: 14rem; 
     width: 100%; 
     object-fit: scale-down;
+}
+
+/* image size only for result page (openlibrary) */
+.open-image{
+    height: auto; 
 }
 
 

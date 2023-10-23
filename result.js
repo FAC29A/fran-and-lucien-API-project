@@ -56,6 +56,7 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
 
 
                         const descriptionElement = document.createElement("p");
+                        descriptionElement.className = "result-description"
 
                         // descriptionContainer = the div container that includes only descriptin  
                         const descriptionContainer = document.createElement("div")
@@ -110,7 +111,7 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         coverDiv.className = "cover-div" 
 
                         const img = document.createElement('img');
-                        img.className = "cover-image"
+                        img.className = "cover-image open-image"
                         // img.src = "";
 
 
