@@ -468,18 +468,21 @@ footer {
     height: auto;
     padding: 0; 
     font-weight: 300; 
-    line-height: 0.5; 
+    line-height: 1; 
     
    
 }
 /* inner html layout */
 .result-item-title{
     font-size: 1.5rem; 
+    padding: 0; 
+    margin-bottom: 0  
     
  }
  .author-italic {
     font-style: italic; 
-    font-size: 1rem 
+    font-size: 1rem; 
+    margin-top: 0.5rem; 
  }
  /* text div (excluding titile and author), to manipulate the space between category and description   */
  .result-text-dv {
@@ -489,11 +492,12 @@ footer {
     align-items: space-between; 
     padding-top: 1rem; 
     font-size: 1rem; 
+    margin-top: 0;
     
  }
 
-/* description in result page   */
- .result-text-dv > p {
+/* description in genre and result page */
+ .result-text-dv > p, .rating-category-container > p, .result-description  {
     font-family: var(--font-dm); 
     line-height: 1.5;
  }
@@ -536,7 +540,10 @@ footer {
     object-fit: scale-down;
 }
 
-
+/* image size only for result page (openlibrary) */
+.open-image{
+    height: auto; 
+}
 
 /* Setup the width and height of image  */
 /* container of cover image  */
@@ -544,6 +551,8 @@ footer {
     justify-self: left;
     
 }
+
+
 
 /* image inside of cover div  */
 /* .cover-div img { */
