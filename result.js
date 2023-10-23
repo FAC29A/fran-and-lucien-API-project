@@ -108,9 +108,10 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         // coverDvi (.cover-div) = container for image 
                         const coverDiv = document.createElement('div')
                         coverDiv.className = "cover-div" 
+
                         const img = document.createElement('img');
                         img.className = "cover-image"
-                        img.src = "";
+                        // img.src = "";
 
 
                         const titleAuthorDiv = document.createElement("div");
@@ -146,12 +147,6 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                        
                         
                         
-    
-                        // layer 3:   image elemennt append to a container
-                        coverDiv.appendChild(img); 
-                        // layer 2:  the medium div includes 3 element div (image, title, text) append the div that contain image 
-                        resultItem.appendChild(coverDiv);
-
 
 
 
@@ -173,12 +168,20 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         fetchBookCover(olIdentifier)
                         .then((bookCoverURL) => {
                                 img.src = bookCoverURL; // Set the image source when it's available
+
+    
+                        // layer 3:   image elemennt append to a container
+                        coverDiv.appendChild(img); 
+                        // layer 2:  the medium div includes 3 element div (image, title, text) append the div that contain image 
+                        resultItem.appendChild(coverDiv);
+
                         })
                         .catch((error) => {
                             console.log("1st fire- no book found " , error);  
                             
-                                resultItem.appendChild(coverDiv)
+                                // resultItem.appendChild(coverDiv)
                                 coverDiv.appendChild(noCoverImageDiv);
+                                resultItem.appendChild(coverDiv);
 
                            
                         });
