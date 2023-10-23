@@ -92,9 +92,8 @@ body {
 
 /* header is for log container */
 header { 
- 
    height: 7rem; 
-   width: 100vw
+   width: 100vw;
    display: flex; 
    align-items: center;
    border-bottom: var(--line-xl) solid var(--blackest); 
@@ -183,10 +182,12 @@ main {
     
 }
 
+
+
 #genre-section {
     grid-column: 2;
     grid-row: 1;
-    border-left: var(--line-m) solid var(--blackest);
+    border-right: var(--line-m) solid var(--blackest);
     padding-bottom: 5rem ; 
    
  }
@@ -636,6 +637,7 @@ footer {
 @media (max-width:800px) {
     main {
         display: block;
+        margin-bottom: 5rem;
     }
     #top5-content {
         gap: 1.7rem; 
@@ -643,10 +645,12 @@ footer {
        
     }
     .index-bestseller-item-div {
-        padding: 1rem; 
+        padding: 0.8rem; 
         grid-column-gap: 0rem;  
-       
+        margin: 0.6rem;
     }
+
+
     .index-book-rank-div {
         width: 3.5rem;
         height: 3.5rem;
@@ -745,10 +749,10 @@ footer {
       }
       
       .carousel_button--left {
-        left: -50px;
+        left: -45px;
       }
       .carousel_button--right {
-        right: -50px;
+        right: -45px;
       }
       
       .carousel_nav {
@@ -779,6 +783,7 @@ footer {
       #footer-first-line{
         display: none;
       } 
+      
 
 }
 
