@@ -436,8 +436,6 @@ footer {
     padding: 0; 
     font-weight: 300; 
     line-height: 1; 
-    
-   
 }
 /* inner html layout */
 .result-item-title{
@@ -765,4 +763,37 @@ footer {
       } 
       
 
+
+/* 
+      --result page  */
+
+      .search-result {
+        display: grid; 
+        grid-template-columns: 1fr; 
+        padding: 2rem; 
+    }
+
+    .title-author-div{
+    
+        grid-column: 1; 
+       
+    }
+
+    .cover-div { 
+        justify-self: center;
+        padding: 2rem 0; 
+        grid-row: 2
+
+
+        
+    }
+
+    #search-bar button {
+        width: 4rem;  
+    }
+
+
+    
+
+      
 }

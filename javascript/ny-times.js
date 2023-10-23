@@ -130,7 +130,7 @@ function fetchBooksForCategory(category) {
         bookImage.src = top5Books[i].book_image;
 
         bookImage.className = "cover-image";
-        bookImageDiv.appendChild(bookImage);
+        bookImageDiv``.appendChild(bookImage);
 
         bookDiv.innerHTML = `
         ${i + 1}.
