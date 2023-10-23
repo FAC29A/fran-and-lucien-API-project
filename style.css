@@ -147,6 +147,7 @@ the container for search input and button */
     outline: none; 
     font-size: var(--font-size-150); 
     color: var(--footer-dark); 
+    width: 80%;
 
 }
 
@@ -187,7 +188,7 @@ main {
 #genre-section {
     grid-column: 2;
     grid-row: 1;
-    border-right: var(--line-m) solid var(--blackest);
+    border-left: var(--line-m) solid var(--blackest);
     padding-bottom: 5rem ; 
    
  }
@@ -195,8 +196,7 @@ main {
 #top5-section\ {
     grid-column: 1;
     grid-row: 1;
-  
-
+   
  }
 
 
@@ -658,9 +658,9 @@ footer {
         margin-left: -2rem;
     }
 
-    #search-bar {
+    /* #search-bar {
         width: 60vw; 
-    }
+    } */
 
     #bestsellers-list {
         display: none;

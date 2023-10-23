@@ -1,3 +1,7 @@
+//import { fetchBooksForCategory } from './ny-times.js';
+
+//import { categories } from './ny-times.js';
+
 const carouselData = [
     {
         genre: "Adult Fiction",
@@ -83,7 +87,8 @@ function carouselLinks(category) {
 
 
 carouselData.forEach(category=>{
-    carouselLinks(category)
+    carouselLinks(category);
+    
 });
 
 
