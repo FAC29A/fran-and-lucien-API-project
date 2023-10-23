@@ -1,7 +1,3 @@
-//import { fetchBooksForCategory } from './ny-times.js';
-
-//import { categories } from './ny-times.js';
-
 const carouselData = [
     {
         genre: "Adult Fiction",
@@ -78,8 +74,7 @@ function carouselLinks(category) {
   
       // Attach a click event to each category link
       carouselListItem.addEventListener('click', (event) => {
-          event.preventDefault(); // Prevent the default link behavior
-        //   const category = category.genre; // Get the category from the link's id
+          event.preventDefault(); 
           window.location.href = category.href;
       });
   
@@ -102,30 +97,10 @@ slides[0].classList.add("current-slide");
 //navigation
 const nextButton = document.querySelector(".carousel_button--right");
 const prevButton = document.querySelector(".carousel_button--left");
-// const dotNav = document.querySelector(".carousel_nav");
-// console.log(dotNav)
-// const dots = Array.from(dotNav.children);
 
 //sizing
 const containerSize = container.getBoundingClientRect();
-// console.log(containerSize)
-// const slideSize = slides[0].getBoundingClientRect();
-// const slideWidth = `${slideSize.width}px`;
-// console.log('slide size:' + slideSize)
-// console.log(containerSize)
-
-
-//setting the height of the container
-// const containerHeight = `${slideSize.height + 200}px`;
-// const containerHeight = "13rem";
-// console.log(containerHeight)
 container.style.height = "13rem";
-
-
-
-// setting the width/height of the slides
-// const slideWidth = "9rem";
-// slideHeight = "10.3rem";
 slides.forEach(slide=>{
     slide.style.width = "9rem";
     slide.style.height = "10.3rem";
@@ -134,9 +109,7 @@ slides.forEach(slide=>{
 //setting the position of slides
 for (let i=0; i<slides.length; i++){
     slides[i].style.left = `${155 *i}px` ;
-    // slides[i].style.left = slideWidth * i
 }
-
 
 //clone slides:
 const clonedSlides = slides.slice(0, 3).map(slide => slide.cloneNode(true));

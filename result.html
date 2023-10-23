@@ -1,59 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="normalize.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200;0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;0,8..60,800;0,8..60,900;1,8..60,200;1,8..60,300;1,8..60,400;1,8..60,500;1,8..60,600;1,8..60,700;1,8..60,800;1,8..60,900&display=swap" rel="stylesheet">
-   
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link 
-    href=
-    "https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" 
-    rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link 
-    href=
-    "https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" 
-    rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link 
-    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display:ital@0;1&family=Elsie+Swash+Caps:wght@400;900&display=swap" 
-    rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/normalize.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200;0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;0,8..60,800;0,8..60,900;1,8..60,200;1,8..60,300;1,8..60,400;1,8..60,500;1,8..60,600;1,8..60,700;1,8..60,800;1,8..60,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display:ital@0;1&family=Elsie+Swash+Caps:wght@400;900&display=swap"
+      rel="stylesheet"
+    />
     <title>Bookster</title>
-</head>
-<body >
-    <!-- header container for logo  -->
-    <header class=result-header>
-        <a href="index.html" class=center>
-            <h1 class="booksterLogo">Bookster</h1>
-            </a>
-        </header>
-    
-    <!-- result text banner -->
-    <section class="result-banner ">
-    <div class = "result-banner-mid-div">
-    <h2 class="result-banner-text">Results for "<span id="query-name"></span>"</h2>
-    </div>
+  </head>
+  <body>
+    <header class="result-header">
+      <a href="index.html" class="center">
+        <h1 class="booksterLogo">Bookster</h1>
+      </a>
+    </header>
+
+    <section class="result-banner">
+      <div class="result-banner-mid-div">
+        <h2 class="result-banner-text">
+          Results for "<span id="query-name"></span>"
+        </h2>
+      </div>
     </section>
 
-    <!-- result dynamic section  -->
-    <!-- the <section> mainly is used to add padding   -->
     <section class="result-section-container">
-    <div id="result-div"></div>
+      <div id="result-div"></div>
     </section>
-    
-    
-    
+
     <footer>Built by Fran and Lucien</footer>
-    <script src="result.js"></script>
-    <!-- <script src="firstPage.js"></script> -->
-    
-    
-</body>
+    <script src="javascript/result.js"></script>
+  </body>
 </html>

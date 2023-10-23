@@ -1,130 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="normalize.css" rel="stylesheet">
-    <!-- <link href="styleslucien.css" rel="stylesheet">
-    <link href="./NY-style.css" rel="stylesheet"> -->
-    <link href="style.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200;0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;0,8..60,800;0,8..60,900;1,8..60,200;1,8..60,300;1,8..60,400;1,8..60,500;1,8..60,600;1,8..60,700;1,8..60,800;1,8..60,900&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/normalize.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200;0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;0,8..60,800;0,8..60,900;1,8..60,200;1,8..60,300;1,8..60,400;1,8..60,500;1,8..60,600;1,8..60,700;1,8..60,800;1,8..60,900&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link 
-    href=
-    "https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" 
-    rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link 
-    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display:ital@0;1&family=Elsie+Swash+Caps:wght@400;900&display=swap" 
-    rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Serif+Display:ital@0;1&family=Elsie+Swash+Caps:wght@400;900&display=swap"
+      rel="stylesheet"
+    />
     <title>Bookster</title>
-</head>
-<body>
-    <!-- header container for logo  -->
+  </head>
+  <body>
     <header class="center">
       <h1>Bookster</h1>
     </header>
 
-    <!-- section: research bar  -->
     <section id="search-section-container">
       <form id="book-search-form">
-        <label for="search-query" id="search-instruction">Search books by title, author, or theme:</label>
-        <!-- search bar grouping  -->
+        <label for="search-query" id="search-instruction"
+          >Search books by title, author, or theme:</label
+        >
+
         <div id="search-bar">
-        <input type="text" id="search-query" name="search-query" placeholder="search" required>
-        <div class="left-styling-block"></div>
-        <button aria-label="submit" type="submit" id="submit"><img alt="" src="images/arrow-right-white.png"></button>
+          <input
+            type="text"
+            id="search-query"
+            name="search-query"
+            placeholder="search"
+            required
+          />
+          <div class="left-styling-block"></div>
+          <button aria-label="submit" type="submit" id="submit">
+            <img alt="" src="images/arrow-right-white.png" />
+          </button>
         </div>
       </form>
     </section>
 
     <main>
-      <!-- section: genre  -->
-      <section id="genre-section "> 
+      <section id="genre-section ">
         <div class="section-banner">
-
-
-    
-
           <div class="padding-for-banner-text">
             <h2>Books by Genre</h2>
-
           </div>
-          <div class="right-styling-block">
-
-          </div>
+          <div class="right-styling-block"></div>
         </div>
-        <div id="bestsellers-list">
-
-        </div>
+        <div id="bestsellers-list"></div>
         <section id="genre_carousel_wrapper" class="genre_carousel_wrapper">
-            <button class="carousel_button carousel_button--left" id="prev" data-dir="prev"><svg xmlns="http://www.w3.org/2000/svg" 
-                width="32" height="32" 
-                fill="#000000" 
-                viewBox="0 0 256 256">
-                <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM149.66,93.66,115.31,128l34.35,34.34a8,8,0,0,1-11.32,11.32l-40-40a8,8,0,0,1,0-11.32l40-40a8,8,0,0,1,11.32,11.32Z">
-                </path>
-                </svg>
-            </button>
-            <div id="genre_carousel" class="genre_carousel">
-                <ul class="carousel_track" id="carousel_track">
-                </ul>
-            </div>
-            <button class="carousel_button carousel_button--right" id="next" data-dir="next">
-                <svg xmlns="http://www.w3.org/2000/svg" 
-                width="32" height="32" 
-                fill="#000000" 
-                viewBox="0 0 256 256">
-                <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm29.66-93.66a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32-11.32L140.69,128,106.34,93.66a8,8,0,0,1,11.32-11.32Z">
-                </path>
-                </svg>
-            </button>
-            <!-- <div class="carousel_nav">
-                <button class="carousel_indicator current-slide"></button>
-                <button class="carousel_indicator"></button>
-                <button class="carousel_indicator"></button>
-                
-            </div> -->
+          <button
+            class="carousel_button carousel_button--left"
+            id="prev"
+            data-dir="prev"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              fill="#000000"
+              viewBox="0 0 256 256"
+            >
+              <path
+                d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM149.66,93.66,115.31,128l34.35,34.34a8,8,0,0,1-11.32,11.32l-40-40a8,8,0,0,1,0-11.32l40-40a8,8,0,0,1,11.32,11.32Z"
+              ></path>
+            </svg>
+          </button>
+          <div id="genre_carousel" class="genre_carousel">
+            <ul class="carousel_track" id="carousel_track"></ul>
+          </div>
+          <button
+            class="carousel_button carousel_button--right"
+            id="next"
+            data-dir="next"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              fill="#000000"
+              viewBox="0 0 256 256"
+            >
+              <path
+                d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm29.66-93.66a8,8,0,0,1,0,11.32l-40,40a8,8,0,0,1-11.32-11.32L140.69,128,106.34,93.66a8,8,0,0,1,11.32-11.32Z"
+              ></path>
+            </svg>
+          </button>
         </section>
       </section>
 
-    
-            
-       <!-- </section> This is an extra closing tag? -->
-       <!-- section: bestsellers top 5 -->
       <section id="top5-section">
         <div class="section-banner">
           <div class="padding-for-banner-text">
             <h2 id="top3">Top 3 Bestsellers</h2>
           </div>
-          <div class="right-styling-block">
-          </div>
+          <div class="right-styling-block"></div>
         </div>
-        <div id="top5-content">
-        </div>
+        <div id="top5-content"></div>
       </section>
-    </main> 
+    </main>
 
-
-   
     <footer>
-      <div id="footer-first-line">
-      </div>
+      <div id="footer-first-line"></div>
       <div id="footer-second-line">
-        <p id="footer-text" >Built by Fran and Lucien</p>
+        <p id="footer-text">Built by Fran and Lucien</p>
       </div>
-    
     </footer>
 
-    <script src="firstPage.js"></script>
-    <!-- <script src="result.js"></script> -->
-    <script src="ny-times.js"></script>
-    <script src="carousel.js"></script>
-</body>
+    <script src="javascript/firstPage.js"></script>
+    <script src="javascript/ny-times.js"></script>
+    <script src="javascript/carousel.js"></script>
+  </body>
 </html>
-
-<!-- <div class="padding-for-banner-text"> -->
