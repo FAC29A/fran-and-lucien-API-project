@@ -247,7 +247,20 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
             const text =  responseJson.description.value;
 
          
-            return text.replace(/\(\[source\]\[\d+\]\)\nPreceded by: \[.*?\]\[\d+\]\nFollowed by: \[.*?\]\[\d+\]\n\n-+/, '');
+            // Remove "([" and everything following it
+            const removedSource1 = text.replace(/\(\[[\s\S]*$/, '');
+
+              // Remove "[" and everything following it
+              const removedSource2 = removedSource1.replace(/\[[\s\S]*$/, '');
+
+            // Then remove "----------" and everything following it
+            const cleanedText = removedSource2.replace(/-{10,}[\s\S]*$/, '');
+
+            return cleanedText; 
+
+
+
+
         } catch (error) {
             console.error(error, "error in description function");
             return "Description not available";
