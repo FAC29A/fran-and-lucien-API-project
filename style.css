@@ -6,6 +6,7 @@
     --dark-grey:#696463; 
     --mid-grey: #696463; 
     --light-grey:#C1BEBD; 
+    --mid-light-grey: #ded8d8; 
     --lightest-grey: #ECE2E2; 
     --whitest: #FCF4F4; 
 
@@ -714,6 +715,7 @@ footer {
         overflow-x: clip;
         border: 1px solid black;
       }
+
       
       .carousel_track {
         padding: 0;
@@ -738,7 +740,11 @@ footer {
         margin: 1rem;
         text-align: center;
       }
-      
+      .carousel_slide:hover{
+        cursor: pointer;
+        background-color: var(pink);
+      }
+     
       .carousel_button {
         position: absolute;
         top: 50%;

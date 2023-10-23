@@ -58,6 +58,7 @@ function carouselLinks(category) {
 
       const carouselLink = document.createElement('a');
       carouselLink.id = category.id
+      carouselLink.href = category.href;
       
     
       //create div containing the genre and image:
@@ -76,7 +77,7 @@ function carouselLinks(category) {
       carouselListItem.appendChild(carouselLink)
   
       // Attach a click event to each category link
-      carouselLink.addEventListener('click', (event) => {
+      carouselListItem.addEventListener('click', (event) => {
           event.preventDefault(); // Prevent the default link behavior
         //   const category = category.genre; // Get the category from the link's id
           window.location.href = category.href;
