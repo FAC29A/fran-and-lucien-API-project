@@ -82,6 +82,9 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                             // layer 3: and then text container that has other text info appendchild description div
                             resultText.appendChild(descriptionContainer); 
                         });
+
+
+  
                                             
 
                         // book image api extract
