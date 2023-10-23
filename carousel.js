@@ -108,29 +108,32 @@ const prevButton = document.querySelector(".carousel_button--left");
 
 //sizing
 const containerSize = container.getBoundingClientRect();
-console.log(containerSize)
-const slideSize = slides[0].getBoundingClientRect();
-const slideWidth = `${slideSize.width}px`;
-console.log(slideSize)
-console.log(containerSize)
+// console.log(containerSize)
+// const slideSize = slides[0].getBoundingClientRect();
+// const slideWidth = `${slideSize.width}px`;
+// console.log('slide size:' + slideSize)
+// console.log(containerSize)
 
 
 //setting the height of the container
-const containerHeight = `${slideSize.height + 200}px`;
+// const containerHeight = `${slideSize.height + 200}px`;
+// const containerHeight = "13rem";
 // console.log(containerHeight)
-container.style.height = containerHeight;
-const slideHeight = `${slideSize.height * 6}px`;
+container.style.height = "13rem";
+
 
 
 // setting the width/height of the slides
+// const slideWidth = "9rem";
+// slideHeight = "10.3rem";
 slides.forEach(slide=>{
-    slide.style.width = slideWidth;
-    slide.style.height = slideHeight;
+    slide.style.width = "9rem";
+    slide.style.height = "10.3rem";
 })
 
 //setting the position of slides
 for (let i=0; i<slides.length; i++){
-    slides[i].style.left = `${(containerSize.width -170) *i}px` ;
+    slides[i].style.left = `${155 *i}px` ;
     // slides[i].style.left = slideWidth * i
 }
 
