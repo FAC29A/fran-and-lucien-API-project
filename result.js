@@ -7,7 +7,8 @@ const searchQuery = urlParams.get("q");
 const researchH2 = document.getElementById("query-name")
 researchH2.innerText = searchQuery; 
 
-
+// show loading indicator 
+document.getElementById('loading-indicator').style.display = 'block';
 
 // api Url setting
 const perPage = 8; // Limit to 8 results per page
@@ -24,6 +25,9 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                   })
             .then(data =>{
                 console.log(data)
+                // Hide the loading indicator when the data is loaded
+                document.getElementById('loading-indicator').style.display = 'none';
+                // Process the API response
                 const booksWithRatings = data.docs.filter(result => result.hasOwnProperty('ratings_average'));
                 const booksWithoutRatings = data.docs.filter(result => !result.hasOwnProperty('ratings_average'));
 
@@ -195,9 +199,11 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
 
             }) //end of then 
             .catch(error => {
+                document.getElementById('loading-indicator').style.display = 'none';
                 console.error("Error fetching data from Open Library API:", error);
                 const searchResults = document.getElementById("search-results");
                 searchResults.innerHTML = "An error occurred while fetching data.";
+                
             });
    
 
