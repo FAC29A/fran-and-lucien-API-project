@@ -2,7 +2,7 @@
 const apiKey = "mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx" 
 // Frans latest api = 'mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx';
 // old API = "AzUyLIxzSLLZygRO896Q1msZZGAgH6V5";
-// lucien api = "61ppkdu3vYf9JrgMIljm72BZDuCAt8vO" 
+const lucienapi = "61ppkdu3vYf9JrgMIljm72BZDuCAt8vO" 
 
 //The categories of books
 const categories = [
@@ -96,7 +96,7 @@ function createBestsellersLink(category) {
 
 // Function to fetch and display the book list for the selected category
 function fetchBooksForCategory(category) {
-    fetch(`https://api.nytimes.com/svc/books/v3/lists/current/${category}.json?api-key=${apiKey}`)
+    fetch(`https://api.nytimes.com/svc/books/v3/lists/current/${category}.json?api-key=${lucienapi}`)
     .then((response) => {
       if (!response.ok) {
         // if (response.status === 429) {
@@ -267,7 +267,7 @@ indexTop5Rendering()
 function indexTop5Rendering() {
 const top5Content = document.getElementById("top5-content"); 
 
-fetch("https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-fiction.json?api-key=mUe2fT4eSndxgMFa9PYAyHeDtCPPhGxx")
+fetch(`https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-fiction.json?api-key=${lucienapi}`)
     .then((response) => {
       if (!response.ok) {
        
