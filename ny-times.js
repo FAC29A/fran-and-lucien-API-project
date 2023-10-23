@@ -99,13 +99,13 @@ function fetchBooksForCategory(category) {
     fetch(`https://api.nytimes.com/svc/books/v3/lists/current/${category}.json?api-key=${lucienapi}`)
     .then((response) => {
       if (!response.ok) {
-        // if (response.status === 429) {
-        //   // Handle 429 error
-        //   throw new Error("Sorry, list not available at this time.");
-        // } else {
-        //   // Handle other errors
+        if (response.status === 429) {
+          // Handle 429 error
+          throw new Error("Sorry, list not available at this time.");
+        } else {
+          // Handle other errors
           throw new Error(`Error ${response.status}: ${response.statusText}`);
-        // }
+        }
       } else {
         return response.json();
       }
@@ -267,12 +267,81 @@ indexTop5Rendering()
 function indexTop5Rendering() {
 const top5Content = document.getElementById("top5-content"); 
 
+const backUpBooks = [
+  {
+      image: "images/adult-fiction.jpeg",
+      title: "Lessons in Chemistry",
+      author: "Bonnie Garmus",
+      alt : "Lessons in Chemistry cover",
+      description:"A scientist and single mother living in California in the 1960s becomes a star on a TV cooking show."
+      
+  },
+  {
+    image: "images/swordCatcher.jpg",
+    title: "Sword Catcher",
+    author: "Cassandra Clare",
+    alt : "Sword Catcher book cover",
+    description:"An orphan who is the body double for a royal heir and a woman with magical abilities are drawn into the underworld of the city-state of Castellane."
+  },
+  {
+    image: "images/holly.jpg",
+    title: "Holly",
+    author: "Stephen King",
+    alt: "Holly cover",
+    description:"The private detective Holly Gibney investigates whether a married pair of octogenarian academics had anything to do with Bonnie Dahl’s disappearance."
+  },
+]
+
 fetch(`https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-fiction.json?api-key=${lucienapi}`)
     .then((response) => {
       if (!response.ok) {
-       
+        if (response.status === 429) {
+          // Handle 429 error
+          const heading = document.getElementById('top3');
+          heading.innerHTML = "Recommended Reads";
+
+          for (let j = 0; j <3; j++) {
+
+            const indexBookRankDiv = document.createElement('div');
+            indexBookRankDiv.className = "index-book-rank-div"; 
+
+            indexBookRankDiv.innerHTML = `
+            <p class="index-rank">No.${j+1}</p>
+            `
+
+            const indexTitleAuthorDiv = document.createElement('div');
+            indexTitleAuthorDiv.className = "index-title-author-div"; 
+            indexTitleAuthorDiv.innerHTML = `
+            <p class="index-top-5-title">${backUpBooks[j].title}</p>
+            <p class="index-top-5-author">by ${backUpBooks[j].author}</p>
+            `
+
+            const indexCoverImageDiv = document.createElement('div'); 
+            indexCoverImageDiv.className = "index-cover-image-div"
+            indexCoverImageDiv.innerHTML = `
+            <img class="index-cover-image" alt="cover for ${backUpBooks[j].alt}" src= " ${backUpBooks[j].image}"">
+            `
+
+            const indexBestsellerItemDiv = document.createElement('div')
+            indexBestsellerItemDiv.className = "index-bestseller-item-div"
+
+            // level 3: each bestseller item append 3 children element ( rank, title/author, cover)
+            indexBestsellerItemDiv.appendChild(indexBookRankDiv); 
+            indexBestsellerItemDiv.appendChild(indexTitleAuthorDiv); 
+            indexBestsellerItemDiv.appendChild(indexCoverImageDiv); 
+
+            // level 2: each bestseller item (in top 5 list there are 5 items) then be appended to a parent div 
+            top5Content.appendChild(indexBestsellerItemDiv); 
+
+
+            }
+
+
+          throw new Error("Sorry, list not available at this time.");
+        } else {
+          // Handle other errors
           throw new Error(`Error ${response.status}: ${response.statusText}`);
-      
+        }
       } else {
         return response.json();
       }
