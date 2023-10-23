@@ -65,6 +65,7 @@ function carouselLinks(category) {
       genreImageContainer.appendChild(genreImage);
       const genreTitle = document.createElement('h3');
       genreTitle.innerHTML = category.genre;
+      genreTitle.classList.add("carousel-genre-title");
       carouselLink.append(genreImageContainer, genreTitle);
 
       //Append <a> element to <li> item
@@ -103,16 +104,17 @@ const prevButton = document.querySelector(".carousel_button--left");
 const containerSize = container.getBoundingClientRect();
 console.log(containerSize)
 const slideSize = slides[0].getBoundingClientRect();
-const slideWidth = `${containerSize.width * 0.3}px`;
-
-// console.log(containerSize)
+const slideWidth = `${slideSize.width}px`;
+console.log(slideSize)
+console.log(containerSize)
 
 
 //setting the height of the container
 const containerHeight = `${slideSize.height + 200}px`;
 // console.log(containerHeight)
 container.style.height = containerHeight;
-const slideHeight = `${containerHeight * 0.9}px`;
+const slideHeight = `${slideSize.height * 6}px`;
+
 
 // setting the width/height of the slides
 slides.forEach(slide=>{
@@ -122,7 +124,7 @@ slides.forEach(slide=>{
 
 //setting the position of slides
 for (let i=0; i<slides.length; i++){
-    slides[i].style.left = `${(containerSize.width -150) *i}px` ;
+    slides[i].style.left = `${(containerSize.width -170) *i}px` ;
     // slides[i].style.left = slideWidth * i
 }
 
