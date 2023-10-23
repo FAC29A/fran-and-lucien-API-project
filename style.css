@@ -468,18 +468,23 @@ footer {
     height: auto;
     padding: 0; 
     font-weight: 300; 
-    line-height: 0.5; 
+    line-height: 1; 
     
-   
 }
+/* adjust the gap between title and author */
+
+
 /* inner html layout */
 .result-item-title{
     font-size: 1.5rem; 
+    padding: 0; 
+    margin-bottom: 0  
     
  }
  .author-italic {
     font-style: italic; 
-    font-size: 1rem 
+    font-size: 1rem; 
+    margin-top: 0.5rem; 
  }
  /* text div (excluding titile and author), to manipulate the space between category and description   */
  .result-text-dv {
@@ -489,6 +494,7 @@ footer {
     align-items: space-between; 
     padding-top: 1rem; 
     font-size: 1rem; 
+    margin-top: 0;
     
  }
 
