@@ -72,11 +72,7 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                             // layer 4:   description <p> append to its own container div
                             descriptionContainer.appendChild(descriptionElement);
                             // layer 3: and then text container that has other text info appendchild description div
-                            resultText.appendChild(descriptionContainer)
-                            
-                            
-
-
+                            resultText.appendChild(descriptionContainer); 
                         })
                         .catch(error => {
                             console.error(error);
@@ -84,16 +80,11 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                             // layer 4:   description <p> append to its own container div
                             descriptionContainer.appendChild(descriptionElement);
                             // layer 3: and then text container that has other text info appendchild description div
-                            resultText.appendChild(descriptionContainer)
+                            resultText.appendChild(descriptionContainer); 
                         });
                                             
 
-
-                        
-
-
-
-                        // Lucien added
+                        // book image api extract
                         const olIdentifier = extractOLIdentifier(book.seed[0]); // Extract OL identifier
                         
                         // create a div on each research result for the top border purpoose
@@ -148,15 +139,7 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         searchResults.appendChild(resultTopLine);
 
                         
-                       
-                        
-                        
-    
-                      
-
-
-
-                        // create the no coverimage block
+                        // create the no cover image block
 
                         const noCoverImageDiv = document.createElement("div");
                         noCoverImageDiv.className = "no-cover-image-div"
@@ -207,7 +190,7 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
             });
    
 
-    // Lucien added below two functions for cover
+    // below two functions for cover
     
     function extractOLIdentifier(key) {
         // Remove "/books/" from the key string
@@ -223,26 +206,6 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
         
     }
 
-    // async function fetchDescription(key) {
-    //      fetch(`https://openlibrary.org${key}.json`)
-    //     .then((response) => {
-    //         if (!response.ok) throw new Error(response.status);
-    //         return response.json; 
-    //     })
-    //     .then((responseJson) => {
-    //      console.log(responseJson, "in the function"); 
-    //     return responseJson.description.cover; 
-       
-    // })
-    //     .catch(error =>{ 
-    //         console.error(error, "error in description function");
-    //         return "Description not available"; })
- 
-    //     }
-
-
-
-    // below are answer of chat gpt 
 
     async function fetchDescription(key) {
         try {
