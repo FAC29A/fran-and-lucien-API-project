@@ -56,6 +56,7 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
 
 
                         const descriptionElement = document.createElement("p");
+                        descriptionElement.className = "result-description"
 
                         // descriptionContainer = the div container that includes only descriptin  
                         const descriptionContainer = document.createElement("div")
@@ -109,8 +110,8 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         const coverDiv = document.createElement('div')
                         coverDiv.className = "cover-div" 
                         const img = document.createElement('img');
-                        img.className = "cover-image"
-                        img.src = "";
+                        img.className = "cover-image open-image"
+                        // img.src = "";
 
 
                         const titleAuthorDiv = document.createElement("div");
@@ -147,11 +148,7 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         
                         
     
-                        // layer 3:   image elemennt append to a container
-                        coverDiv.appendChild(img); 
-                        // layer 2:  the medium div includes 3 element div (image, title, text) append the div that contain image 
-                        resultItem.appendChild(coverDiv);
-
+                      
 
 
 
@@ -173,12 +170,17 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         fetchBookCover(olIdentifier)
                         .then((bookCoverURL) => {
                                 img.src = bookCoverURL; // Set the image source when it's available
+                                // layer 3:   image elemennt append to a container
+                        coverDiv.appendChild(img); 
+                        // layer 2:  the medium div includes 3 element div (image, title, text) append the div that contain image 
+                        resultItem.appendChild(coverDiv);
                         })
                         .catch((error) => {
                             console.log("1st fire- no book found " , error);  
                             
-                                resultItem.appendChild(coverDiv)
+                                // resultItem.appendChild(coverDiv)
                                 coverDiv.appendChild(noCoverImageDiv);
+                                resultItem.appendChild(coverDiv);
 
                            
                         });
@@ -245,9 +247,18 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
             const responseJson = await response.json();
             console.log(responseJson, "in the function");
             const text =  responseJson.description.value;
+             // Remove "([" and everything following it
+             const removedSource1 = text.replace(/\(\[[\s\S]*$/, '');
 
+             // Remove "[" and everything following it
+             const removedSource2 = removedSource1.replace(/\[[\s\S]*$/, '');
+
+           // Then remove "----------" and everything following it
+           const cleanedText = removedSource2.replace(/-{10,}[\s\S]*$/, '');
+
+           return cleanedText; 
          
-            return text.replace(/\(\[source\]\[\d+\]\)\nPreceded by: \[.*?\]\[\d+\]\nFollowed by: \[.*?\]\[\d+\]\n\n-+/, '');
+            
         } catch (error) {
             console.error(error, "error in description function");
             return "Description not available";
