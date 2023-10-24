@@ -2,7 +2,7 @@
     /* colour variable */
     --backgound-light: rgb(242, 241, 230); 
     --footer-dark: rgb(50, 47, 47);
-    --blackest: #000000; 
+    --blackest: #182443; 
     --dark-grey:#696463; 
     --mid-grey: #696463; 
     --light-grey:#C1BEBD; 
@@ -85,7 +85,7 @@ body {
     height: 100vh;
     max-width: 100vw;
     padding-top: 2rem; 
-    padding-bottom: 5rem; 
+    padding-bottom: 6rem; 
     /* font-family: 'DM Serif Display', serif; */
 }
 
@@ -332,15 +332,18 @@ main {
 h1 {
     font-family: 'Elsie Swash Caps', serif;
     font-size: 3.8rem;
+    color: var(--blackest); 
 
 }
 h2 {
     font-size: 1.8rem;
+    color: var(--blackest); 
 
 }
 
 h3 {
     font-size: 1.5rem; 
+    color: var(--blackest); color: var(--blackest); 
 }
 
 footer {
@@ -401,6 +404,7 @@ footer {
 
 .result-banner-mid-div {
     border: var(--line-s) solid var(--blackest); 
+    border-left: none; 
     margin-top: 2rem ;
     margin-bottom: 4rem; 
     width: fit-content; 
