@@ -7,7 +7,8 @@ const searchQuery = urlParams.get("q");
 const researchH2 = document.getElementById("query-name")
 researchH2.innerText = searchQuery; 
 
-
+// show loading indicator 
+document.getElementById('loading-indicator').style.display = 'block';
 
 // api Url setting
 const perPage = 8; // Limit to 8 results per page
@@ -24,6 +25,9 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                   })
             .then(data =>{
                 console.log(data)
+                // Hide the loading indicator when the data is loaded
+                document.getElementById('loading-indicator').style.display = 'none';
+                // Process the API response
                 const booksWithRatings = data.docs.filter(result => result.hasOwnProperty('ratings_average'));
                 const booksWithoutRatings = data.docs.filter(result => !result.hasOwnProperty('ratings_average'));
 
@@ -68,11 +72,7 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                             // layer 4:   description <p> append to its own container div
                             descriptionContainer.appendChild(descriptionElement);
                             // layer 3: and then text container that has other text info appendchild description div
-                            resultText.appendChild(descriptionContainer)
-                            
-                            
-
-
+                            resultText.appendChild(descriptionContainer); 
                         })
                         .catch(error => {
                             console.error(error);
@@ -80,16 +80,14 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                             // layer 4:   description <p> append to its own container div
                             descriptionContainer.appendChild(descriptionElement);
                             // layer 3: and then text container that has other text info appendchild description div
-                            resultText.appendChild(descriptionContainer)
+                            resultText.appendChild(descriptionContainer); 
                         });
+
+
+  
                                             
 
-
-                        
-
-
-
-                        // Lucien added
+                        // book image api extract
                         const olIdentifier = extractOLIdentifier(book.seed[0]); // Extract OL identifier
                         
                         // create a div on each research result for the top border purpoose
@@ -144,15 +142,7 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
                         searchResults.appendChild(resultTopLine);
 
                         
-                       
-                        
-                        
-    
-                      
-
-
-
-                        // create the no coverimage block
+                        // create the no cover image block
 
                         const noCoverImageDiv = document.createElement("div");
                         noCoverImageDiv.className = "no-cover-image-div"
@@ -195,13 +185,15 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
 
             }) //end of then 
             .catch(error => {
+                document.getElementById('loading-indicator').style.display = 'none';
                 console.error("Error fetching data from Open Library API:", error);
                 const searchResults = document.getElementById("search-results");
                 searchResults.innerHTML = "An error occurred while fetching data.";
+                
             });
    
 
-    // Lucien added below two functions for cover
+    // below two functions for cover
     
     function extractOLIdentifier(key) {
         // Remove "/books/" from the key string
@@ -217,26 +209,6 @@ const apiUrl = `https://openlibrary.org/search.json?q=${searchQuery}&limit=${per
         
     }
 
-    // async function fetchDescription(key) {
-    //      fetch(`https://openlibrary.org${key}.json`)
-    //     .then((response) => {
-    //         if (!response.ok) throw new Error(response.status);
-    //         return response.json; 
-    //     })
-    //     .then((responseJson) => {
-    //      console.log(responseJson, "in the function"); 
-    //     return responseJson.description.cover; 
-       
-    // })
-    //     .catch(error =>{ 
-    //         console.error(error, "error in description function");
-    //         return "Description not available"; })
- 
-    //     }
-
-
-
-    // below are answer of chat gpt 
 
     async function fetchDescription(key) {
         try {
