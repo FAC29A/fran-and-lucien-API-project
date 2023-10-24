@@ -474,7 +474,8 @@ footer {
   width: fit-content;
   border: var(--line-s) solid var(--blackest);
   font-family: var(--font-dm); 
-  size: var(--font-size-150)
+  size: var(--font-size-150); 
+  margin: auto; 
 
 }
 
