@@ -5,6 +5,25 @@ What's Bookster, you ask? It's an app that utilises data from the Project OpenLi
 
 **A mobile view of our app:**
 https://github.com/FAC29A/fran-and-lucien-API-project/assets/124707247/8bf521a0-dc82-4347-99cd-5a03b35903af 
+
+## Features
+### General search
+- Users can search for books by title, author or subject
+- Results displayed are sorted by rating, with highest-rated books displayed first
+- Book covers, descriptions and ratings are shown when available
+
+### NY times bestsellers
+- On the left, theere is a display of the top 3 current bestsellers
+- If these are unavailable, the user will see 3 recommended reads from a previous bestsellers list
+- On the right, users can select a category of bestselling books to read
+- Once they click on a category, they are taken to a new page where the can view the current 10 bestselling books
+- On the bestsellers page, users can view the title, author, description and can click on a link to amazon to purchase the book
+
+## Project Milestones
+- Finding an API which worked!
+- Displaying images for books from the open library API
+- Working around the 429 error when we had made too many requests (showing errors or alternate content so the site was still usable)
+
 ### User Stories 
 **Core Stories**
 As a user, I want to:
