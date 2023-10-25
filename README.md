@@ -6,6 +6,10 @@ What's Bookster, you ask? It's an app that utilises data from the Project OpenLi
 **A mobile view of our app:**
 https://github.com/FAC29A/fran-and-lucien-API-project/assets/124707247/8bf521a0-dc82-4347-99cd-5a03b35903af 
 
+<img width="532" alt="Screenshot 2023-10-25 at 15 02 47" src="https://github.com/FAC29A/fran-and-lucien-API-project/assets/128807685/b5de8520-50b8-48e0-bf75-07fc60361558">
+<img width="1051" alt="Screenshot 2023-10-25 at 15 02 20" src="https://github.com/FAC29A/fran-and-lucien-API-project/assets/128807685/686ec537-53ae-4e0f-a70b-2c4cb2bbf44d">
+
+
 ## Features
 ### General search
 - Users can search for books by title, author or subject
