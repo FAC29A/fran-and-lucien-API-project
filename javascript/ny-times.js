@@ -50,6 +50,7 @@ function createBestsellersLink(category) {
 
   const categoryTitleContainer = document.createElement("div");
   const categoryTitle = document.createElement("h3");
+  categoryTitle.className = "category-title"; 
   categoryTitle.innerHTML = category.category;
   categoryTitleContainer.appendChild(categoryTitle);
 

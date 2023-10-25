@@ -162,8 +162,15 @@ the container for search input and button */
 
 #search-bar button img{
     width: 1.8rem; 
+    transition: transform 0.5s ease-in-out;
 
 }
+
+#search-bar button img:hover{
+    transform: translateX(30px);
+}
+
+
 #search-bar button {
     background-color: var(--blackest);
     width: 8rem ; 
@@ -187,7 +194,7 @@ main {
 
 
 
-#genre-section\ {
+#genre-section {
     grid-column: 2;
     grid-row: 1;
     border-left: var(--line-m) solid var(--blackest);
@@ -195,7 +202,7 @@ main {
    
  }
 
-#top5-section\ {
+#top5-section {
     grid-column: 1;
     grid-row: 1;
     
@@ -242,6 +249,32 @@ main {
 #genre_carousel_wrapper{
     display:none;
 }
+
+/* clickable for category title  */
+.category-title {
+    display: inline-block;
+  position: relative;
+  color: var(--blackest)
+    
+}
+
+.category-title::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--dark-grey);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .category-title:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
 
 
 
@@ -326,6 +359,8 @@ main {
 }
 
 
+
+
 /* -------------------------------- All pages ---------------------------------------------------*/
 
 /* h1 is for logo  */
@@ -333,7 +368,12 @@ h1 {
     font-family: 'Elsie Swash Caps', serif;
     font-size: 3.8rem;
     color: var(--blackest); 
+    transition: transform .5s;
 
+}
+
+h1:hover{
+    transform: scale(1.1);
 }
 h2 {
     font-size: 1.8rem;
@@ -481,6 +521,7 @@ footer {
   font-family: var(--font-dm); 
   size: var(--font-size-150); 
   margin: auto; 
+  
 
 }
 
@@ -521,9 +562,6 @@ footer {
     justify-self: left;
     
 }
-
-
-
 
 
 .no-cover-image-div{
@@ -675,7 +713,7 @@ footer {
         /* margin-left: auto;
         margin-right: auto;
         margin-bottom:0rem; */
-        background: var(--lightest-grey);
+        background: linear-gradient(90deg, var(--light-grey) 0%, var(--whitest) 35%, var(--light-grey) 100%);
         border: var(--line-l) solid var(--blackest);
       }
       
@@ -691,7 +729,7 @@ footer {
         height: 100%;
         position: relative;
         overflow-x: clip;
-        border: 1px solid black;
+        border: 1px solid var(--blackest)
       }
 
       
@@ -713,15 +751,26 @@ footer {
         padding-top: 0.6rem;
         padding-bottom: 1.2rem;
         border-radius: 12px;
-        border: 1px solid black;
+        border: var(--line-s) solid black;
         background-color: white;
         margin: 1rem;
         text-align: center;
+        transition: transform .2s; /* Animation */
+       
       }
       .carousel_slide:hover{
         cursor: pointer;
-        background-color: var(pink);
+        background-color: var(--blackest); 
+        color: white; 
+        transform: scale(1.1); 
       }
+
+      .carousel_slide:hover > a > h3 {
+        color: white; 
+      }
+
+
+
      
       .carousel_button {
         position: absolute;
@@ -730,6 +779,7 @@ footer {
         background: transparent;
         border: 0;
         cursor: pointer;
+        
       }
       
       .carousel_button--left {
@@ -767,6 +817,20 @@ footer {
       #footer-first-line{
         display: none;
       } 
+
+      svg {
+
+        border-radius: 50%;
+        
+      }
+
+      svg:hover {
+        background-color: var(--blackest);
+        fill: var(--backgound-light)
+      
+      }
+
+    
       
 
 
