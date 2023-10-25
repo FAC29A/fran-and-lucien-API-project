@@ -560,7 +560,7 @@ footer {
 
 
 .no-cover-image-div{
-    background-color: var(--light-grey);
+    background-color: var(--mid-light-grey);
     width: 11.25rem; 
     height: 17.25rem; 
     text-align: center; 
@@ -585,12 +585,12 @@ footer {
 }
 
 .cover-title {
-    color: var(--dark-grey); 
+    color: var(--footer-dark); 
     font-size: 0.8rem; 
 }
 
 .cover-author {
-    color: var(--dark-grey); 
+    color: var(--footer-dark); 
     font-size: 0.7rem
 }
 
