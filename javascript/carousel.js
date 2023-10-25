@@ -2,6 +2,7 @@ const carouselData = [
     {
         genre: "Adult Fiction",
         image: "images/adult-fiction.jpeg",
+        alt: "Lessons in Chemistry cover",
         search: "hardcover-fiction",
         id: "carousel-fiction",
         href: "bestsellers.html?category=hardcover-fiction"
@@ -9,6 +10,7 @@ const carouselData = [
     {
         genre: "Adult Nonfiction",
         image: "images/adult-nonfiction.jpeg",
+        alt: "Going Infinite cover",
         search: "hardcover-nonfiction",
         id: "carousel-nonfiction",
         href: "bestsellers.html?category=hardcover-nonfiction"
@@ -16,6 +18,7 @@ const carouselData = [
     {
         genre: "Young Adult Fiction",
         image: "images/young-adult.jpeg",
+        alt: "Curious Tides cover",
         search: "young-adult-hardcover",
         id: "carousel-young",
         href: "bestsellers.html?category=young-adult-hardcover"
@@ -23,6 +26,7 @@ const carouselData = [
     {
         genre: "Children's Fiction (8-12)",
         image: "images/children8-12.jpeg",
+        alt: "The Puppets of Spellhorst cover",
         search: "childrens-middle-grade-hardcover",
         id: "carousel-children",
         href: "bestsellers.html?category=childrens-middle-grade-hardcover"
@@ -30,6 +34,7 @@ const carouselData = [
     {
         genre: "Picture Books",
         image: "images/picture.jpeg",
+        alt: "Just Because cover",
         search: "picture-books",
         id: "carousel-picture",
         href: "bestsellers.html?category=picture-books"
@@ -37,6 +42,7 @@ const carouselData = [
     {
         genre: "Graphic Books and Manga",
         image: "images/graphic.jpeg",
+        alt: "Hooky cover",
         search: "graphic-books-and-manga",
         id: "carousel-graphic",
         href: "bestsellers.html?category=graphic-books-and-manga"
@@ -61,6 +67,7 @@ function carouselLinks(category) {
       const genreImageContainer = document.createElement('div');
       const genreImage = document.createElement('img');
       genreImage.src = category.image;
+      genreImage.alt = category.alt;
       genreImage.className = 'carousel_img';
       genreImageContainer.className = 'carousel-img-container';
       genreImageContainer.appendChild(genreImage);
