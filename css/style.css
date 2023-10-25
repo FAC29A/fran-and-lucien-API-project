@@ -194,7 +194,7 @@ main {
 
 
 
-#genre-section\ {
+#genre-section {
     grid-column: 2;
     grid-row: 1;
     border-left: var(--line-m) solid var(--blackest);
@@ -202,7 +202,7 @@ main {
    
  }
 
-#top5-section\ {
+#top5-section {
     grid-column: 1;
     grid-row: 1;
     
@@ -368,7 +368,12 @@ h1 {
     font-family: 'Elsie Swash Caps', serif;
     font-size: 3.8rem;
     color: var(--blackest); 
+    transition: transform .5s;
 
+}
+
+h1:hover{
+    transform: scale(1.1);
 }
 h2 {
     font-size: 1.8rem;
