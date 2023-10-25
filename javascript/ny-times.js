@@ -75,7 +75,7 @@ function createBestsellersLink(category) {
 // Function to fetch and display the book list for the selected category
 function fetchBooksForCategory(category) {
   fetch(
-    `https://api.nytimes.com/svc/books/v3/lists/current/${category}.json?api-key=${lucienapi}`
+    `https://api.nytimes.com/svc/books/v3/lists/current/${category}.json?api-key=${apiKey}`
   )
     .then((response) => {
       if (!response.ok) {
@@ -223,7 +223,7 @@ function indexTop5Rendering() {
   ];
 
   fetch(
-    `https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-fiction.json?api-key=${lucienapi}`
+    `https://api.nytimes.com/svc/books/v3/lists/current/combined-print-and-e-book-fiction.json?api-key=${apiKey}`
   )
     .then((response) => {
       if (!response.ok) {
