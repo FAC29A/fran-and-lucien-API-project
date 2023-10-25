@@ -48,6 +48,8 @@ As a user, I want to:
 **Stretch stories**
 - As an impatient user, I want to see some indication that data is loading
 - As a confused user, I want to be told when something goes wrong
+  
+<img width="539" alt="Screenshot 2023-10-25 at 15 43 08" src="https://github.com/FAC29A/fran-and-lucien-API-project/assets/128807685/84f45ec8-a94e-442c-9e96-9caef2d5fcb4">
 
 ### How to Use
 - Clone the repository and open the Index.html file in your browser (you can also visit [Bookster](https://fac29a.github.io/fran-and-lucien-API-project/))
