@@ -173,6 +173,7 @@ function fetchBooksForCategory(category) {
     .catch((error) => {
       console.error("Error:", error);
       results.textContent = error.message;
+      results.style.textAlign = "center";
     });
 }
 

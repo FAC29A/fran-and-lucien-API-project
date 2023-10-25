@@ -182,7 +182,7 @@ the container for search input and button */
 main { 
     display: grid; 
     grid-template-columns: 1.5fr 1fr; 
-    
+    margin-bottom: 5rem;
 }
 
 
@@ -198,7 +198,7 @@ main {
 #top5-section\ {
     grid-column: 1;
     grid-row: 1;
-   
+    
  }
 
 
@@ -613,7 +613,7 @@ footer {
 /* ------ Media queries ----------------------*/
 
 /* Smallest screen */
-@media (max-width:800px) {
+@media (max-width:894px) {
     main {
         display: block;
         margin-bottom: 5rem;
