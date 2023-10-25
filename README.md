@@ -47,4 +47,4 @@ As a user, I want to:
 N.B. If you are getting a 429 response- please try an alternative API key!!
 
 ## Authors
-This project was made by Luciensday and Frannerz
+This project was made by [Lucien](https://github.com/Luciensday) and [Fran](https://github.com/Frannerz)
